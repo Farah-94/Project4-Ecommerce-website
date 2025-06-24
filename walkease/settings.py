@@ -96,7 +96,7 @@ DATABASES = {
     'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
 }
 
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['walkease-website.herokuapp.com', 'localhost']
 
 
