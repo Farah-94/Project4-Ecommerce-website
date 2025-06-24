@@ -1,0 +1,12 @@
+{% extends "store/base.html" %}
+{% load static %}
+
+{% block title %}Logged Out{% endblock %}
+
+{% block content %}
+<div class="account-settings">
+  <h2>You’ve been signed out</h2>
+  <p>Thanks for visiting WalkEase!</p>
+  <a href="{% url 'store:product_list' %}">Back to Home</a>
+</div>
+{% endblock %}
