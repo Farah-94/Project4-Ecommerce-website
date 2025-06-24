@@ -54,7 +54,7 @@
           {% if user.is_authenticated %}
             <!-- Signed in: Profile + Sign Out inside menu -->
             <a href="{% url 'user:profile_detail' %}">Profile</a>
-      <a href="{% url 'account_logout' %}?next=/accounts/login/">Sign Out</a>          {% else %}
+      <a href="{% url 'account_logout' %}?next=/accounts/login/">Sign Out</a>     
              {% else %}
             <a href="{% url 'cart:account_login' %}">Sign In</a>
           {% endif %}
