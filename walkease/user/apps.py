@@ -5,4 +5,4 @@ class UserConfig(AppConfig):
     name = 'walkease.user'
 
     def ready(self):
-        import walkease.user.signals  # Registers signals for creating Profile objects.
+        import walkease.user.signals

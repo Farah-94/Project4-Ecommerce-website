@@ -1,17 +1,13 @@
+from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
-from django.dispatch import receiver
 from .models import Profile
 
 @receiver(post_save, sender=User)
-def create_profile(sender, instance, created, **kwargs):
+def manage_user_profile(sender, instance, created, **kwargs):
     if created:
+        # Create profile when a new user is registered
         Profile.objects.create(user=instance)
-
-@receiver(post_save, sender=User)
-def save_profile(sender, instance, **kwargs):
-    try:
+    elif hasattr(instance, 'profile'):
+        # Save existing profile on user update
         instance.profile.save()
-    except Profile.DoesNotExist:
-        # If the profile doesn't exist, create it
-        Profile.objects.create(user=instance)
