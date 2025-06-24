@@ -94,7 +94,10 @@ import dj_database_url
 
 # Use dj-database-url to parse DATABASE_URL
 DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
+    "default": dj_database_url.config(
+        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",  # local fallback
+        conn_max_age=600,
+    )
 }
 
 DEBUG = True
@@ -152,6 +155,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
