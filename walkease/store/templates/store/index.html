@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
 
 
-  
+
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-gtdU5cJE6L43H4icMpuP6loDmoPHwY7+Aa6Mgx8k5KVoo0FI9wqxY5y1tZxCRc0NwXmyov2P7T8NIKj5x4Uwg=="
@@ -54,9 +54,8 @@
           {% if user.is_authenticated %}
             <!-- Signed in: Profile + Sign Out inside menu -->
             <a href="{% url 'user:profile_detail' %}">Profile</a>
-            <a href="{% url 'cart:account_logout' %}">Sign Out</a>
-          {% else %}
-            <!-- Anonymous: Sign In inside menu -->
+      <a href="{% url 'account_logout' %}?next=/accounts/login/">Sign Out</a>          {% else %}
+             {% else %}
             <a href="{% url 'cart:account_login' %}">Sign In</a>
           {% endif %}
 
