@@ -160,6 +160,7 @@ AUTHENTICATION_BACKENDS = [
 ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
 ACCOUNT_SIGNUP_REDIRECT_URL = '/accounts/login/'
 ACCOUNT_LOGIN_ON_SIGNUP = False
+LOGIN_REDIRECT_URL = '/'
 
 # Stripe API keys (use env variables for security!)
 import os
