@@ -48,6 +48,11 @@ class ProductAdminForm(forms.ModelForm):
         required=False,
         label="Primary image filename"
     )
+    new_category = forms.CharField(
+        required=False,
+        label="New Category (optional)",
+        help_text="Enter a new category name if it’s not listed."
+    )
 
     class Meta:
         model = Product
@@ -65,6 +70,17 @@ class ProductAdminForm(forms.ModelForm):
                 if fname.lower().endswith(('.jpg', '.jpeg', '.png', '.gif')):
                     choices.append((fname, fname))
         self.fields["image"].choices = choices
+
+    def clean(self):
+        cleaned_data = super().clean()
+        new_cat_name = cleaned_data.get("new_category")
+
+        if new_cat_name:
+            from .models import Category
+            category, _ = Category.objects.get_or_create(name=new_cat_name)
+            cleaned_data["category"] = category
+
+        return cleaned_data
 
 
 # ------------------------------------------------------------------------------
