@@ -253,3 +253,63 @@ button[type="submit"]:hover {
     background-color: #5b4f56;
 
 }
+
+
+/* ---------allauth logout---------- */
+.account-settings {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  font-family: 'Segoe UI', sans-serif;
+  border: 1px solid #e6f0ff;
+}
+
+.account-settings h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #003366;
+}
+
+.account-settings ul {
+  list-style: none;
+  padding: 0;
+}
+
+.account-settings li {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #f0f4ff;
+}
+
+.account-settings li a {
+  text-decoration: none;
+  color: #0066cc;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.account-settings li a:hover {
+  color: #004999;
+}
+
+.logout-form {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.logout-form button {
+  background-color: #0070f3;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.4rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.logout-form button:hover {
+  background-color: #005acc;
+}
