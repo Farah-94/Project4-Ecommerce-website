@@ -97,7 +97,12 @@ DATABASES = {
 }
 
 DEBUG = True
-ALLOWED_HOSTS = ['walkease-website.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'walkease-website.herokuapp.com',
+    'walkease-website-1eaae1018604.herokuapp.com',  # ← this is the new one Heroku generated
+]
 
 
 
