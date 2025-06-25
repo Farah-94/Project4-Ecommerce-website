@@ -15,13 +15,19 @@ urlpatterns = [
     path("remove/<int:item_id>/", views.remove_from_cart, name="remove_from_cart"),
 
     # Allauth integration with your custom templates
-    path("signup/",
-         SignupView.as_view(template_name="cart/signup.html"),
-         name="account_signup"),
-    path("signin/",
-         CustomLoginView.as_view(),
-         name="account_login"),
-    path("signout/",
-         logout_view,
-         name="account_logout"),
+    # path("signup/",
+    #      SignupView.as_view(template_name="cart/signup.html"),
+    #      name="account_signup"),
+    # path("signin/",
+    #      CustomLoginView.as_view(),
+    #      name="account_login"),
+    # path("signout/",
+    #      logout_view,
+    #      name="account_logout"),
+
+    path('signup/', views.signup, name='signup'),
+    path('signin/', views.signin, name='signin'),
+    path('logout/', views.logout_view, name='logout'),
+
+
 ]
