@@ -1,5 +1,3 @@
-# walkease/cart/views.py
-
 from django.contrib import messages
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -8,27 +6,26 @@ from django.urls import reverse
 from walkease.store.models import Product
 from walkease.cart.models import CartItem
 
-# import Allauth’s views
 from allauth.account.views import LoginView, LogoutView
 
+# -------------------------------
+# Cart-related views
+# -------------------------------
 
 @login_required
 def cart_view(request):
-    """Show the user’s cart with line‐item and grand totals."""
     cart_items = CartItem.objects.filter(user=request.user)
     total_price = sum(item.product.price * item.quantity for item in cart_items)
     for item in cart_items:
         item.total_price = item.product.price * item.quantity
 
     return render(request, "cart/cart.html", {
-        "cart_items":  cart_items,
+        "cart_items": cart_items,
         "total_price": total_price,
     })
 
-
 @login_required
 def add_to_cart(request, product_id):
-    """Add a product to the cart, or bump quantity if it already exists."""
     product = get_object_or_404(Product, id=product_id)
     size_value = request.POST.get("size", "M")
     try:
@@ -49,12 +46,8 @@ def add_to_cart(request, product_id):
     messages.success(request, f"{product.name} added to your cart!")
     return redirect("cart:view_cart")
 
-
 @login_required
 def update_cart(request, item_id, action):
-    """
-    Increase or decrease a cart item’s quantity, or remove it if quantity hits zero.
-    """
     cart_item = get_object_or_404(CartItem, id=item_id, user=request.user)
 
     if action == "increase":
@@ -74,27 +67,24 @@ def update_cart(request, item_id, action):
 
     return redirect("cart:view_cart")
 
-
 @login_required
 def remove_from_cart(request, item_id):
-    """Remove a product from the cart entirely."""
     cart_item = get_object_or_404(CartItem, id=item_id, user=request.user)
     cart_item.delete()
     messages.success(request, f"{cart_item.product.name} removed from your cart.")
     return redirect("cart:view_cart")
 
+# -------------------------------
+# Custom Auth views using Allauth
+# -------------------------------
 
-def cart_login_view(request, *args, **kwargs):
-    """
-    Delegate to Allauth’s LoginView but render cart/signin.html.
-    """
-    view = LoginView.as_view(template_name="cart/signin.html")
-    return view(request, *args, **kwargs)
+class CustomLoginView(LoginView):
+    template_name = "cart/signin.html"
+    redirect_authenticated_user = True
 
+    def get_success_url(self):
+        return reverse("index")
 
-from allauth.account.views import LogoutView
+def logout_view(request, *args, **kwargs):
+    return LogoutView.as_view(template_name="cart/signout.html")(request, *args, **kwargs)
 
-def cart_logout_view(request, *args, **kwargs):
-    return LogoutView.as_view(
-        template_name="cart/signout.html"
-    )(request, *args, **kwargs)

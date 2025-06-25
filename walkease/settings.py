@@ -161,10 +161,14 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
-ACCOUNT_SIGNUP_REDIRECT_URL = '/accounts/login/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/cart/signin/'
+ACCOUNT_SIGNUP_REDIRECT_URL = '/cart/signin/'
+
 ACCOUNT_LOGIN_ON_SIGNUP = False
 LOGIN_REDIRECT_URL = '/'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "optional"
 
 # Stripe API keys (use env variables for security!)
 import os
