@@ -13,5 +13,6 @@ urlpatterns = [
     # Allauth views using default template discovery
     path("signup/", a_views.SignupView.as_view(), name="account_signup"),
     path("signin/", a_views.LoginView.as_view(), name="account_login"),
+
     path("signout/", a_views.LogoutView.as_view(), name="account_logout"),
 ]
