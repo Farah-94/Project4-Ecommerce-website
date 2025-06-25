@@ -38,7 +38,7 @@
         </a>
       {% else %}
         <!-- Anonymous: show Sign In link only at top -->
-        <a href="{% url 'cart:account_login' %}">
+        <a href="{% url 'account_login' %}">
           <i class="fa-solid fa-right-to-bracket"></i> Sign In
         </a>
       {% endif %}
@@ -54,9 +54,9 @@
           {% if user.is_authenticated %}
             <!-- Signed in: Profile + Sign Out inside menu -->
             <a href="{% url 'user:profile_detail' %}">Profile</a>
-<a href="{% url 'cart:account_logout' %}?next=/cart/signin/">Sign Out</a>
+<a href="{% url 'account_logout' %}?next=/cart/signin/">Sign Out</a>
              {% else %}
-            <a href="{% url 'cart:account_login' %}">Sign In</a>
+            <a href="{% url 'account_login' %}">Sign In</a>
           {% endif %}
 
           {% if user.is_staff %}

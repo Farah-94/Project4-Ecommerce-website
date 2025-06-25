@@ -89,7 +89,7 @@ def remove_from_cart(request, item_id):
 
 class CustomLoginView(LoginView):
     """Renders cart/templates/account/login.html and redirects on success."""
-    template_name = "cart/login.html"
+    template_name = "account/login.html"
     redirect_authenticated_user = True
 
     def get_success_url(self):
@@ -103,6 +103,6 @@ def logout_view(request, *args, **kwargs):
     Renders cart/templates/account/logout.html.
     """
     return LogoutView.as_view(
-        template_name="cart/logout.html",
+        template_name="account/logout.html",
         next_page=reverse("cart:account_login")
     )(request, *args, **kwargs)
