@@ -11,9 +11,6 @@ from .models import Product, ProductImage, Review
 
 from django.contrib.auth.models import User, Group
 
-# Remove Users and Groups from the admin panel
-admin.site.unregister(User)
-admin.site.unregister(Group)
 
 
 
