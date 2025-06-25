@@ -83,7 +83,7 @@ class CustomLoginView(LoginView):
     redirect_authenticated_user = True
 
     def get_success_url(self):
-        return reverse("index")
+        return reverse("store:index")
 
 def logout_view(request, *args, **kwargs):
     return LogoutView.as_view(template_name="cart/logout.html")(request, *args, **kwargs)
