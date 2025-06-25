@@ -166,8 +166,9 @@ ACCOUNT_SIGNUP_REDIRECT_URL = '/cart/signin/'
 
 ACCOUNT_LOGIN_ON_SIGNUP = False
 LOGIN_REDIRECT_URL = '/'
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = True
+
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+
 ACCOUNT_EMAIL_VERIFICATION = "optional"
 
 # Stripe API keys (use env variables for security!)
