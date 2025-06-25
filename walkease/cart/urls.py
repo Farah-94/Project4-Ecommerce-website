@@ -1,6 +1,9 @@
 from django.urls import path
 from allauth.account import views as a_views
 from . import views
+from allauth.account.views import LoginView
+
+path("signin/", LoginView.as_view(), name="account_login"),
 
 app_name = "cart"
 
