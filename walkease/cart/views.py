@@ -1,3 +1,5 @@
+# walkease/cart/views.py
+
 from django.contrib import messages
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -6,7 +8,9 @@ from django.urls import reverse
 from walkease.store.models import Product
 from walkease.cart.models import CartItem
 
+# Import Allauth’s base views
 from allauth.account.views import LoginView, LogoutView
+
 
 # -------------------------------
 # Cart-related views
@@ -23,6 +27,7 @@ def cart_view(request):
         "cart_items": cart_items,
         "total_price": total_price,
     })
+
 
 @login_required
 def add_to_cart(request, product_id):
@@ -46,6 +51,7 @@ def add_to_cart(request, product_id):
     messages.success(request, f"{product.name} added to your cart!")
     return redirect("cart:view_cart")
 
+
 @login_required
 def update_cart(request, item_id, action):
     cart_item = get_object_or_404(CartItem, id=item_id, user=request.user)
@@ -67,6 +73,7 @@ def update_cart(request, item_id, action):
 
     return redirect("cart:view_cart")
 
+
 @login_required
 def remove_from_cart(request, item_id):
     cart_item = get_object_or_404(CartItem, id=item_id, user=request.user)
@@ -74,17 +81,28 @@ def remove_from_cart(request, item_id):
     messages.success(request, f"{cart_item.product.name} removed from your cart.")
     return redirect("cart:view_cart")
 
+
+
 # -------------------------------
 # Custom Auth views using Allauth
 # -------------------------------
 
 class CustomLoginView(LoginView):
+    """Renders cart/templates/account/login.html and redirects on success."""
     template_name = "cart/login.html"
     redirect_authenticated_user = True
 
     def get_success_url(self):
+        # Change 'store:index' to whatever your home URL name is
         return reverse("store:index")
 
-def logout_view(request, *args, **kwargs):
-    return LogoutView.as_view(template_name="cart/logout.html")(request, *args, **kwargs)
 
+def logout_view(request, *args, **kwargs):
+    """
+    Wraps Allauth’s LogoutView so we can point at our custom template.
+    Renders cart/templates/account/logout.html.
+    """
+    return LogoutView.as_view(
+        template_name="cart/logout.html",
+        next_page=reverse("cart:account_login")
+    )(request, *args, **kwargs)
