@@ -1,0 +1,61 @@
+{% extends "store/base.html" %}
+{% load static %}
+{% block title %}Sign In{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'cart/css/style.css' %}">
+
+<main class="signin-form-container">
+
+  {% if messages %}
+    <div class="messages">
+      {% for message in messages %}
+        <p class="{{ message.tags }}">{{ message }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if form.errors %}
+    <ul class="errorlist">
+      {% for err in form.non_field_errors %}
+        <li>{{ err }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <form method="POST" action="{% url 'account_login' %}">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}">
+
+    <div class="form-group">
+      <label for="{{ form.login.id_for_label }}">Username or Email</label>
+      {{ form.login }}
+      {% for err in form.login.errors %}
+        <p class="error">{{ err }}</p>
+      {% endfor %}
+    </div>
+
+    <div class="form-group">
+      <label for="{{ form.password.id_for_label }}">Password</label>
+      {{ form.password }}
+      {% for err in form.password.errors %}
+        <p class="error">{{ err }}</p>
+      {% endfor %}
+    </div>
+
+    <div class="form-group">
+      <label>{{ form.remember }} Remember Me</label>
+    </div>
+
+    <button type="submit">Sign In</button>
+  </form>
+
+  <p>
+    Forgot password?
+    <a href="{% url 'account_reset_password' %}">Reset here</a><br>
+    Don’t have an account?
+    <a href="{% url 'account_signup' %}">Sign Up</a>
+  </p>
+
+</main>
+{% endblock %}
