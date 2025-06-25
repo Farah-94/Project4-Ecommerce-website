@@ -79,12 +79,12 @@ def remove_from_cart(request, item_id):
 # -------------------------------
 
 class CustomLoginView(LoginView):
-    template_name = "cart/signin.html"
+    template_name = "cart/login.html"
     redirect_authenticated_user = True
 
     def get_success_url(self):
         return reverse("index")
 
 def logout_view(request, *args, **kwargs):
-    return LogoutView.as_view(template_name="cart/signout.html")(request, *args, **kwargs)
+    return LogoutView.as_view(template_name="cart/logout.html")(request, *args, **kwargs)
 
