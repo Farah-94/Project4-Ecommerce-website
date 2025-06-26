@@ -16,8 +16,19 @@ urlpatterns = [
     # Allauth integration with your custom templates
 
     
-    path("signup/", CustomSignupView.as_view(),  name="account_signup"),
-    path("signin/", CustomLoginView.as_view(),  name="account_login"),
-    path("signout/", logout_view,               name="account_logout"),
-    path("signout/", CustomLogoutView.as_view(), name="account_logout"),
+   path(
+        "signup/",
+        CustomSignupView.as_view(),
+        name="account_signup",
+    ),
+    path(
+        "signin/",
+        CustomLoginView.as_view(),
+        name="account_login",
+    ),
+    path(
+        "signout/",
+        CustomLogoutView.as_view(),
+        name="account_logout",
+    ),
 ]
