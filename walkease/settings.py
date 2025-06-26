@@ -10,77 +10,79 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import os
 from pathlib import Path
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
+# SECURITY
+# ------------------------------------------------------------------------------
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-tyxcwv9z^$2c5dnugh9xz6zqyt_d4e#5-$g5=zr2=w!ew$5if*'
+# Use an env var for the secret key in production; fallback to your dev key.
+SECRET_KEY = os.getenv(
+    "DJANGO_SECRET_KEY",
+    "django-insecure-tyxcwv9z^$2c5dnugh9xz6zqyt_d4e#5-$g5=zr2=w!ew$5if*"
+)
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Turn debug on/off via an env var
+DEBUG = os.getenv("DJANGO_DEBUG", "False") == "True"
 
-
-
-
-# Application definition
-
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-
-    # Project apps
-     'walkease.store.apps.StoreConfig',
-     'walkease.cart.apps.CartConfig',
-     'walkease.checkout.apps.CheckoutConfig',
-     'walkease.user.apps.UserConfig',
-
-
-     'allauth',
-     'allauth.account',
-     'allauth.socialaccount',
-
-
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "walkease-website.herokuapp.com",
+    "walkease-website-1eaae1018604.herokuapp.com",
 ]
 
+
+# APPLICATION DEFINITION
+# ------------------------------------------------------------------------------
+
+INSTALLED_APPS = [
+    # Django contrib
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "django.contrib.sites",            # required by allauth
+
+    # Third-party
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+
+    # Your apps
+    "walkease.store.apps.StoreConfig",
+    "walkease.cart.apps.CartConfig",
+    "walkease.checkout.apps.CheckoutConfig",
+    "walkease.user.apps.UserConfig",
+]
 
 SITE_ID = 1
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
-ROOT_URLCONF = 'walkease.urls'
-
-
-from pathlib import Path
-
-# settings.py is at shoes/walkease/settings.py
-# So BASE_DIR should resolve to shoes/
-BASE_DIR = Path(__file__).resolve().parent.parent
+ROOT_URLCONF = "walkease.urls"
 
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        # This tells Django to look in shoes/templates/ first
-        "DIRS": [ BASE_DIR / "templates" ],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -92,110 +94,88 @@ TEMPLATES = [
     },
 ]
 
+WSGI_APPLICATION = "walkease.wsgi.application"
 
-WSGI_APPLICATION = 'walkease.wsgi.application'
 
+# DATABASE
+# ------------------------------------------------------------------------------
 
-# Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
-import dj_database_url
-
-# Use dj-database-url to parse DATABASE_URL
 DATABASES = {
     "default": dj_database_url.config(
-        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",  # local fallback
+        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
         conn_max_age=600,
     )
 }
 
-DEBUG = True
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    'walkease-website.herokuapp.com',
-    'walkease-website-1eaae1018604.herokuapp.com',  # ← this is the new one Heroku generated
-]
 
-
-
-
-
-# Password validation
-# https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
+# PASSWORD VALIDATION
+# ------------------------------------------------------------------------------
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/5.2/topics/i18n/
+# INTERNATIONALIZATION
+# ------------------------------------------------------------------------------
 
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
+LANGUAGE_CODE = "en-us"
+TIME_ZONE = "UTC"
 USE_I18N = True
-
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.2/howto/static-files/
+# STATIC FILES
+# ------------------------------------------------------------------------------
 
-# Static files
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATIC_URL = '/static/'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_URL = "/static/"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# DEFAULTS
+# ------------------------------------------------------------------------------
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
-ACCOUNT_LOGOUT_REDIRECT_URL = '/cart/signin/'
-ACCOUNT_SIGNUP_REDIRECT_URL = '/cart/signin/'
 
+# django-allauth settings
+ACCOUNT_LOGOUT_REDIRECT_URL = "/cart/signin/"
+ACCOUNT_SIGNUP_REDIRECT_URL = "/cart/signin/"
 ACCOUNT_LOGIN_ON_SIGNUP = False
-LOGIN_REDIRECT_URL = '/'
-
-ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
-
+LOGIN_REDIRECT_URL = "/"
+ACCOUNT_SIGNUP_FIELDS = ["email*", "username*", "password1*", "password2*"]
 ACCOUNT_EMAIL_VERIFICATION = "optional"
 
-# Stripe API keys (use env variables for security!)
-import os
 
-STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY')
-STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
+# STRIPE
+# ------------------------------------------------------------------------------
+
+STRIPE_PUBLIC_KEY = os.getenv("STRIPE_PUBLIC_KEY")
+STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
 
 
-
-import os
+# EMAIL (Mailgun SMTP)
+# ------------------------------------------------------------------------------
 
 EMAIL_BACKEND       = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST          = os.environ["MAILGUN_SMTP_SERVER"]
-EMAIL_PORT          = int(os.environ.get("MAILGUN_SMTP_PORT", 587))
+EMAIL_HOST          = os.getenv("MAILGUN_SMTP_SERVER")
+EMAIL_PORT          = int(os.getenv("MAILGUN_SMTP_PORT", 587))
 EMAIL_USE_TLS       = True
-EMAIL_HOST_USER     = os.environ["MAILGUN_SMTP_LOGIN"]
-EMAIL_HOST_PASSWORD = os.environ["MAILGUN_SMTP_PASSWORD"]
+EMAIL_HOST_USER     = os.getenv("MAILGUN_SMTP_LOGIN")
+EMAIL_HOST_PASSWORD = os.getenv("MAILGUN_SMTP_PASSWORD")
 DEFAULT_FROM_EMAIL  = "Your Site <no-reply@yourdomain.com>"
-EMAIL_TIMEOUT = 20  # seconds
 
+# Use this for server-exception emails
+SERVER_EMAIL = DEFAULT_FROM_EMAIL
+
+# Avoid hangs
+EMAIL_TIMEOUT = 20  # seconds
