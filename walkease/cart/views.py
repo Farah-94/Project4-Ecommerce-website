@@ -87,8 +87,15 @@ def remove_from_cart(request, item_id):
 # Custom Auth views using Allauth
 # -------------------------------
 
-from allauth.account.views import SignupView as AllauthSignupView
-from django.urls import reverse
+
+from django.urls import reverse, reverse_lazy
+from allauth.account.views import (
+    SignupView as AllauthSignupView,
+    LoginView as AllauthLoginView,
+    LogoutView as AllauthLogoutView,
+)
+
+# … your existing cart‐related view imports and view functions here …
 
 class CustomSignupView(AllauthSignupView):
     """
@@ -102,22 +109,23 @@ class CustomSignupView(AllauthSignupView):
         return reverse("store:index")
 
 
-class CustomLoginView(LoginView):
-    """Renders cart/templates/account/login.html and redirects on success."""
+class CustomLoginView(AllauthLoginView):
+    """
+    Renders shoes/templates/account/login.html
+    and redirects into your shop on success.
+    """
     template_name = "account/login.html"
     redirect_authenticated_user = True
 
     def get_success_url(self):
-        # Change 'store:index' to whatever your home URL name is
         return reverse("store:index")
 
 
-def logout_view(request, *args, **kwargs):
+class CustomLogoutView(AllauthLogoutView):
     """
-    Wraps Allauth’s LogoutView so we can point at our custom template.
-    Renders cart/templates/account/logout.html.
+    Renders shoes/templates/account/logout.html
+    and redirects to cart:account_login.
     """
-    return LogoutView.as_view(
-        template_name="account/logout.html",
-        next_page=reverse("cart:account_login")
-    )(request, *args, **kwargs)
+    template_name = "account/logout.html"
+    next_page = reverse_lazy("cart:account_login")
+
