@@ -1,13 +1,17 @@
-{% extends "store/base.html" %}
-{% load static %}
-
-
-{% block title %}Sign In – WalkEase{% endblock %}
-
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign In</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
+</head>
+<body>
   <main class="signin-form-container">
     <h1>Sign In</h1>
 
+    {# global messages #}
     {% if messages %}
       <ul class="messages">
         {% for msg in messages %}
@@ -16,19 +20,11 @@
       </ul>
     {% endif %}
 
-    {% if form.non_field_errors %}
-      <ul class="errorlist">
-        {% for e in form.non_field_errors %}
-          <li>{{ e }}</li>
-        {% endfor %}
-      </ul>
-    {% endif %}
-
-    <form method="POST" action="{% url 'account_login' %}">
+    <form method="POST" action="{% url 'cart:account_login' %}">
       {% csrf_token %}
 
       <div class="form-group">
-        {{ form.login.label_tag }}
+        {{ form.login.label_tag }}<br>
         {{ form.login }}
         {% for err in form.login.errors %}
           <p class="error">{{ err }}</p>
@@ -36,7 +32,7 @@
       </div>
 
       <div class="form-group">
-        {{ form.password.label_tag }}
+        {{ form.password.label_tag }}<br>
         {{ form.password }}
         {% for err in form.password.errors %}
           <p class="error">{{ err }}</p>
@@ -46,9 +42,7 @@
       <button type="submit">Sign In</button>
     </form>
 
-    <p class="alternate">
-      Don’t have an account?
-      <a href="{% url 'account_signup' %}">Sign Up</a>
-    </p>
+    <p>Don’t have an account? <a href="{% url 'cart:account_signup' %}">Sign Up</a></p>
   </main>
-{% endblock %}
+</body>
+</html>
