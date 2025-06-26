@@ -87,7 +87,6 @@ def remove_from_cart(request, item_id):
 # Custom Auth views using Allauth
 # -------------------------------
 
-
 from django.urls import reverse, reverse_lazy
 from allauth.account.views import (
     SignupView as AllauthSignupView,
@@ -95,13 +94,10 @@ from allauth.account.views import (
     LogoutView as AllauthLogoutView,
 )
 
-# … your existing cart‐related view imports and view functions here …
+# — your other cart views here —
 
 class CustomSignupView(AllauthSignupView):
-    """
-    Renders shoes/templates/account/signup.html
-    and redirects into your shop on success.
-    """
+    """Renders templates/account/signup.html and then sends to store:index."""
     template_name = "account/signup.html"
     redirect_authenticated_user = True
 
@@ -110,10 +106,7 @@ class CustomSignupView(AllauthSignupView):
 
 
 class CustomLoginView(AllauthLoginView):
-    """
-    Renders shoes/templates/account/login.html
-    and redirects into your shop on success.
-    """
+    """Renders templates/account/login.html and then sends to store:index."""
     template_name = "account/login.html"
     redirect_authenticated_user = True
 
@@ -122,10 +115,7 @@ class CustomLoginView(AllauthLoginView):
 
 
 class CustomLogoutView(AllauthLogoutView):
-    """
-    Renders shoes/templates/account/logout.html
-    and redirects to cart:account_login.
-    """
+    """Renders templates/account/logout.html and then redirects to cart login."""
     template_name = "account/logout.html"
     next_page = reverse_lazy("cart:account_login")
 
