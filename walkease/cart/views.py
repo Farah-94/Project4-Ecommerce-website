@@ -104,11 +104,13 @@ class CustomSignupView(AllauthSignupView):
     def get_success_url(self):
         return reverse("store:index")
 
-
 class CustomLoginView(AllauthLoginView):
-    """Renders templates/account/login.html and then sends to store:index."""
+    """
+    Always renders account/login.html on GET,
+    then on POST redirects to store:index on success.
+    """
     template_name = "account/login.html"
-    redirect_authenticated_user = True
+    redirect_authenticated_user = False   # ← ensure the form always shows
 
     def get_success_url(self):
         return reverse("store:index")
