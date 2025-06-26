@@ -87,6 +87,21 @@ def remove_from_cart(request, item_id):
 # Custom Auth views using Allauth
 # -------------------------------
 
+from allauth.account.views import SignupView as AllauthSignupView
+from django.urls import reverse
+
+class CustomSignupView(AllauthSignupView):
+    """
+    Renders shoes/templates/account/signup.html
+    and redirects into your shop on success.
+    """
+    template_name = "account/signup.html"
+    redirect_authenticated_user = True
+
+    def get_success_url(self):
+        return reverse("store:index")
+
+
 class CustomLoginView(LoginView):
     """Renders cart/templates/account/login.html and redirects on success."""
     template_name = "account/login.html"

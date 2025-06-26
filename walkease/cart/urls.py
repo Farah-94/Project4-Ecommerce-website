@@ -3,7 +3,7 @@
 from django.urls import path
 from . import views
 from allauth.account.views import SignupView  # you can keep using this
-from .views import CustomLoginView, logout_view
+from .views import CustomLoginView, logout_view, CustomSignupView
 
 app_name = "cart"
 
@@ -15,9 +15,11 @@ urlpatterns = [
     path("remove/<int:item_id>/", views.remove_from_cart, name="remove_from_cart"),
 
     # Allauth integration with your custom templates
-    path("signup/",
-         SignupView.as_view(template_name="cart/signup.html"),
-         name="account_signup"),
+     path(
+      "signup/",
+      CustomSignupView.as_view(),
+      name="account_signup"
+    ),
     path("signin/",
          CustomLoginView.as_view(),
          name="account_login"),
