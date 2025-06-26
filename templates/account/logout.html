@@ -1,19 +1,26 @@
-{% extends "store/base.html" %}
-{% load static %}
-
-
-{% block title %}Signed Out – WalkEase{% endblock %}
-
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Signed Out – WalkEase</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'cart/css/style.css' %}">
+</head>
+<body>
   <main class="logout-container">
     <div class="card">
       <h2>You’re signed out</h2>
-      <p>Thanks for stopping by WalkEase!<br>
-         Come back soon.</p>
+      <p>
+        Thanks for stopping by WalkEase!<br>
+        Come back soon.
+      </p>
       <div class="actions">
-        <a class="btn" href="{% url 'account_login' %}">Sign In Again</a>
+        <a class="btn" href="{% url 'cart:account_login' %}">Sign In Again</a>
         <a class="btn outline" href="{% url 'store:product_list' %}">Return to Shop</a>
       </div>
     </div>
   </main>
-{% endblock %}
+</body>
+</html>
+
