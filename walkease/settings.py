@@ -72,23 +72,26 @@ ROOT_URLCONF = 'walkease.urls'
 
 from pathlib import Path
 
+# settings.py is at shoes/walkease/settings.py
+# So BASE_DIR should resolve to shoes/
 BASE_DIR = Path(__file__).resolve().parent.parent
-# → BASE_DIR == shoes/walkease
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ BASE_DIR / 'templates' ],  # points at shoes/walkease/templates
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        # This tells Django to look in shoes/templates/ first
+        "DIRS": [ BASE_DIR / "templates" ],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
             ],
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'walkease.wsgi.application'
 
