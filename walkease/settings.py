@@ -69,10 +69,16 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'walkease.urls'
 
+
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+# → BASE_DIR == shoes/walkease
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # Add your templates directory
+        'DIRS': [ BASE_DIR / 'templates' ],  # points at shoes/walkease/templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
