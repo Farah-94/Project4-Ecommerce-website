@@ -185,3 +185,17 @@ import os
 
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
+
+
+
+import os
+
+EMAIL_BACKEND       = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST          = os.environ["MAILGUN_SMTP_SERVER"]
+EMAIL_PORT          = int(os.environ.get("MAILGUN_SMTP_PORT", 587))
+EMAIL_USE_TLS       = True
+EMAIL_HOST_USER     = os.environ["MAILGUN_SMTP_LOGIN"]
+EMAIL_HOST_PASSWORD = os.environ["MAILGUN_SMTP_PASSWORD"]
+DEFAULT_FROM_EMAIL  = "Your Site <no-reply@yourdomain.com>"
+EMAIL_TIMEOUT = 20  # seconds
+
