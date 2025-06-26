@@ -83,41 +83,32 @@ def remove_from_cart(request, item_id):
 
 
 
-# -------------------------------
-# Custom Auth views using Allauth
-# -------------------------------
+from django.contrib.auth import logout as django_logout
+from django.shortcuts import render, redirect
+from django.urls import reverse
+from allauth.account.views import SignupView as AllauthSignupView, LoginView as AllauthLoginView
 
-from django.urls import reverse, reverse_lazy
-from allauth.account.views import (
-    SignupView as AllauthSignupView,
-    LoginView as AllauthLoginView,
-    LogoutView as AllauthLogoutView,
-)
-
-# — your other cart views here —
+# … your other cart views (cart_view, add_to_cart, etc.) go above …
 
 class CustomSignupView(AllauthSignupView):
-    """Renders templates/account/signup.html and then sends to store:index."""
     template_name = "account/signup.html"
     redirect_authenticated_user = True
 
     def get_success_url(self):
         return reverse("store:index")
 
-class CustomLoginView(AllauthLoginView):
-    """
-    Always renders account/login.html on GET,
-    then on POST redirects to store:index on success.
-    """
-    template_name = "account/login.html"
-    redirect_authenticated_user = False   # ← ensure the form always shows
 
+class CustomLoginView(AllauthLoginView):
+    template_name = "account/login.html"
+    redirect_authenticated_user = False   # ← do not auto‐redirect
     def get_success_url(self):
         return reverse("store:index")
 
 
-class CustomLogoutView(AllauthLogoutView):
-    """Renders templates/account/logout.html and then redirects to cart login."""
-    template_name = "account/logout.html"
-    next_page = reverse_lazy("cart:account_login")
-
+def CustomLogoutView(request):
+    """
+    1) Forcefully log the user out
+    2) Render your logout template with the 'Sign In Again' link
+    """
+    django_logout(request)
+    return render(request, "account/logout.html")

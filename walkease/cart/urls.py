@@ -12,7 +12,7 @@ urlpatterns = [
     path("remove/<int:item_id>/",    views.remove_from_cart,  name="remove_from_cart"),
 
     # Allauth integration with your custom templates
-    path("signup/", CustomSignupView.as_view(),  name="account_signup"),
-    path("signin/", CustomLoginView.as_view(),  name="account_login"),
-    path("signout/", CustomLogoutView.as_view(), name="account_logout"),
+   path("signup/", CustomSignupView.as_view(), name="account_signup"),
+    path("signin/", CustomLoginView.as_view(), name="account_login"),
+    path("signout/", CustomLogoutView,            name="account_logout"),
 ]
