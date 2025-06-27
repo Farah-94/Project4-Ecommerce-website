@@ -148,3 +148,4 @@ DEFAULT_FROM_EMAIL = "Your Site <no-reply@yourcustomdomain.com>"
 
 # For Django error emails
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
+
