@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
-    "anymail",                          # << add this
+                       # << add this
 
     # Your apps
     "walkease.store.apps.StoreConfig",
