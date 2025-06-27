@@ -143,6 +143,7 @@ ANYMAIL = {
     "MAILGUN_API_KEY": os.getenv("MAILGUN_API_KEY"),
     "MAILGUN_SENDER_DOMAIN": os.getenv("MAILGUN_DOMAIN"),
 }
+
 DEFAULT_FROM_EMAIL = "Your Site <no-reply@yourcustomdomain.com>"
 
 # For Django error emails
