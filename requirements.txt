@@ -4,7 +4,6 @@ charset-normalizer==3.4.2
 dj-database-url==3.0.0
 Django==5.2.1
 django-allauth==65.9.0
-django-anymail==13.0
 gunicorn==23.0.0
 idna==3.10
 packaging==25.0

@@ -54,7 +54,7 @@
           {% if user.is_authenticated %}
             <!-- Signed in: Profile + Sign Out inside menu -->
             <a href="{% url 'user:profile_detail' %}">Profile</a>
-<a href="{% url 'cart:account_logout' %}?next=/cart/signin/">Sign Out</a>
+            <a href="{% url 'cart:account_logout' %}?next=/cart/signin/">Sign Out</a>
              {% else %}
             <a href="{% url 'cart:account_login' %}">Sign In</a>
           {% endif %}
@@ -101,7 +101,7 @@
       <h2>Contact Us</h2>
       <p>Have questions or need more information? Reach out via any of the methods below.</p>
       <ul class="contact-details">
-        <li>Email: <a href="mailto:info@walkease.co.uk">info@example.com</a></li>
+        <li>Email: <a href="mailto:info@walkease.co.uk">info@walkease.com</a></li>
         <li>Phone: +1 (234) 567 890</li>
         <li>Address: 123 Main Street, London, UK</li>
       </ul>

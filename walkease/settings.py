@@ -65,7 +65,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "walkease.urls"
+import os
+from pathlib import Path
 
+BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -136,16 +139,7 @@ ACCOUNT_EMAIL_VERIFICATION = "optional"
 STRIPE_PUBLIC_KEY = os.getenv("STRIPE_PUBLIC_KEY")
 STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
 
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
-# EMAIL (Mailgun via AnyMail)
-EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
-ANYMAIL = {
-    "MAILGUN_API_KEY": os.getenv("MAILGUN_API_KEY"),
-    "MAILGUN_SENDER_DOMAIN": os.getenv("MAILGUN_DOMAIN"),
-}
 
-DEFAULT_FROM_EMAIL = "Your Site <no-reply@yourcustomdomain.com>"
-
-# For Django error emails
-SERVER_EMAIL = DEFAULT_FROM_EMAIL
 
