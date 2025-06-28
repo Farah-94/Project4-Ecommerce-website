@@ -108,6 +108,6 @@ class CustomLoginView(AllauthLoginView):
 
 
 def CustomLogoutView(request):
-    django_logout(request)
-    request.session.flush()
+    django_logout(request)         # ← logs out the user
+    request.session.flush()        # ← optional: clears all session data
     return render(request, "account/logout.html")
