@@ -128,7 +128,11 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 SITE_ID = 1
+
 # django-allauth
+
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"  # 🔄 updated this line
+ACCOUNT_EMAIL_REQUIRED = True                      # ✅ optional: explicit email requirement
 ACCOUNT_LOGOUT_REDIRECT_URL = "/cart/signin/"
 ACCOUNT_SIGNUP_REDIRECT_URL = "/cart/signin/"
 ACCOUNT_LOGIN_ON_SIGNUP = False
@@ -136,10 +140,9 @@ LOGIN_REDIRECT_URL = "/"
 ACCOUNT_SIGNUP_FIELDS = ["email", "username", "password1", "password2"]
 ACCOUNT_EMAIL_VERIFICATION = "optional"
 LOGIN_URL = "/cart/signin/"
-ACCOUNT_LOGIN_METHODS = {"username", "email"}
-
 
 LOGOUT_URL = "/cart/signout/"
+
 
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
