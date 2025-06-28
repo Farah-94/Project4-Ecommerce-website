@@ -10,6 +10,7 @@ import dj_database_url
 
 # BASE_DIR
 BASE_DIR = Path(__file__).resolve().parent.parent
+DEBUG = True
 
 # SECURITY
 SECRET_KEY = os.getenv(
@@ -133,6 +134,9 @@ ACCOUNT_LOGIN_ON_SIGNUP = False
 LOGIN_REDIRECT_URL = "/"
 ACCOUNT_SIGNUP_FIELDS = ["email*", "username*", "password1*", "password2*"]
 ACCOUNT_EMAIL_VERIFICATION = "optional"
+LOGIN_URL = "/cart/signin/"
+
+LOGOUT_URL = "/cart/signout/"
 
 
 # STRIPE
