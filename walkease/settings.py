@@ -10,7 +10,8 @@ import dj_database_url
 
 # BASE_DIR
 BASE_DIR = Path(__file__).resolve().parent.parent
-DEBUG = True
+DEBUG = os.getenv("DJANGO_DEBUG", "False") == "True"
+
 
 # SECURITY
 SECRET_KEY = os.getenv(
@@ -135,8 +136,13 @@ LOGIN_REDIRECT_URL = "/"
 ACCOUNT_SIGNUP_FIELDS = ["email", "username", "password1", "password2"]
 ACCOUNT_EMAIL_VERIFICATION = "optional"
 LOGIN_URL = "/cart/signin/"
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 
 LOGOUT_URL = "/cart/signout/"
+
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 
 # STRIPE
