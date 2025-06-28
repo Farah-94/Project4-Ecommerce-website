@@ -89,13 +89,15 @@ from django.urls import reverse
 from allauth.account.views import SignupView as AllauthSignupView, LoginView as AllauthLoginView
 
 # … your other cart views (cart_view, add_to_cart, etc.) go above …
-
 class CustomSignupView(AllauthSignupView):
     template_name = "account/signup.html"
     redirect_authenticated_user = True
 
-    def get_success_url(self):
-        return reverse("store:index")
+    def form_valid(self, form):
+        user = form.save(self.request)
+        messages.success(self.request, "Account created! Please sign in below.")
+        return redirect("account_login")  # Send them to the login page after signup
+
 
 
 class CustomLoginView(AllauthLoginView):
@@ -106,9 +108,6 @@ class CustomLoginView(AllauthLoginView):
 
 
 def CustomLogoutView(request):
-    """
-    1) Forcefully log the user out
-    2) Render your logout template with the 'Sign In Again' link
-    """
     django_logout(request)
+    request.session.flush()
     return render(request, "account/logout.html")
