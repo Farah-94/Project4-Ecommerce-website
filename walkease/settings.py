@@ -17,7 +17,7 @@ SECRET_KEY = os.getenv(
     "DJANGO_SECRET_KEY",
     "django-insecure-tyxcwv9z^$2c5dnugh9xz6zqyt_d4e#5-$g5=zr2=w!ew$5if*"
 )
-DEBUG = os.getenv("DJANGO_DEBUG", "False") == "True"
+# DEBUG = os.getenv("DJANGO_DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = [
     "localhost",
@@ -132,7 +132,7 @@ ACCOUNT_LOGOUT_REDIRECT_URL = "/cart/signin/"
 ACCOUNT_SIGNUP_REDIRECT_URL = "/cart/signin/"
 ACCOUNT_LOGIN_ON_SIGNUP = False
 LOGIN_REDIRECT_URL = "/"
-ACCOUNT_SIGNUP_FIELDS = ["email*", "username*", "password1*", "password2*"]
+ACCOUNT_SIGNUP_FIELDS = ["email", "username", "password1", "password2"]
 ACCOUNT_EMAIL_VERIFICATION = "optional"
 LOGIN_URL = "/cart/signin/"
 

@@ -21,8 +21,7 @@
     </div>
 {% endif %}
 
-<form method="POST" action="{% url 'cart:account_signup' %}">
-
+<form method="POST" action="{% url 'account_signup' %}">
     {% csrf_token %}  <!-- ✅ Prevents CSRF attacks -->
 
   <label for="username">Username:</label>
@@ -50,8 +49,7 @@
 {% endif %}
     <button type="submit">Sign Up</button>
 </form>
-<p>Already have an account? <a href="{% url 'cart:account_login' %}">Sign In</a>
-</p>
+<p>Already have an account? <a href="{% url 'account_login' %}">Sign In</a></p></p>
     </main>
 </body>
 </html>
