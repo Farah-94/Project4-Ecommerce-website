@@ -136,7 +136,8 @@ LOGIN_REDIRECT_URL = "/"
 ACCOUNT_SIGNUP_FIELDS = ["email", "username", "password1", "password2"]
 ACCOUNT_EMAIL_VERIFICATION = "optional"
 LOGIN_URL = "/cart/signin/"
-ACCOUNT_AUTHENTICATION_METHOD = "username_email"
+ACCOUNT_LOGIN_METHODS = {"username", "email"}
+
 
 LOGOUT_URL = "/cart/signout/"
 
