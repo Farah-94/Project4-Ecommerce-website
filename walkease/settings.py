@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     "walkease.user.apps.UserConfig",
 ]
 
-SITE_ID = 1
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -125,7 +125,7 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # DEFAULT PRIMARY KEY FIELD TYPE
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-
+SITE_ID = 1
 # django-allauth
 ACCOUNT_LOGOUT_REDIRECT_URL = "/cart/signin/"
 ACCOUNT_SIGNUP_REDIRECT_URL = "/cart/signin/"
