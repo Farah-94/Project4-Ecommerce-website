@@ -119,15 +119,16 @@ class CustomLoginView(AllauthLoginView):
 
 
 
+
 def CustomLogoutView(request):
     print("🔒 Logging out…")
     django_logout(request)
     request.session.flush()
 
-    response = HttpResponseRedirect(reverse("account_login"))
+    # Optionally clear cookies (still fine to keep)
+    response = render(request, "account/logout.html")
     response.delete_cookie("sessionid", path="/")
     response.delete_cookie("csrftoken", path="/")
 
-    # Optional: debug
-    print("✅ Session flushed, cookies cleared")
+    print("✅ Session flushed, showing logout confirmation page")
     return response
