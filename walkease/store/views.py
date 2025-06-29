@@ -31,26 +31,38 @@ def product_detail(request, product_id):
 
 @login_required
 def buy_product(request, product_id):
+    # 🎯 1. Get the product or return 404 if it doesn't exist
     product = get_object_or_404(Product, id=product_id)
 
-    # Always define a form early — avoids UnboundLocalError
-    review_form = ReviewForm(initial={"rating": 5})
+    # ✍️ 2. Create a blank review form (in case we need to show it later)
+    review_form = ReviewForm(initial={"rating": 5})  # Default rating shown
 
+    # 🚦 3. If this is a POST request (form submission)
     if request.method == "POST":
+        # 🛒 3a. User clicked "Add to Cart" — handled elsewhere
         if request.POST.get("add_to_cart"):
-            ...
+            # Your add-to-cart logic goes here...
             return redirect("cart:view_cart")
 
+        # 📝 3b. User submitted a review
         elif request.POST.get("submit_review"):
-            review_form = ReviewForm(request.POST)
+            review_form = ReviewForm(request.POST)  # Load posted data into form
+
             if review_form.is_valid():
+                # Save review with additional fields
                 review = review_form.save(commit=False)
                 review.product = product
                 review.user = request.user
-                review.display = True
+                review.display = True  # Mark as approved
                 review.save()
-                return redirect("store:buy_product", product_id=product.id)
 
+                # Redirect back to the same page to show new review
+                return redirect("store:buy_product", product_id=product.id)
+            else:
+                # Optional: log errors during development
+                print("❌ Review form errors:", review_form.errors)
+
+    # 📦 4. Load existing reviews and render the page
     return render(request, "store/buy_product.html", {
         "product": product,
         "reviews": product.reviews.filter(display=True),
