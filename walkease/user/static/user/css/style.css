@@ -100,8 +100,8 @@ form input, form textarea, form select, form input[type="date"] {
   margin-bottom: 1rem;
   border: 1px solid #49112d;
   border-radius: 6px;
-  background: #222;
-  color: #fff;
+  background: whitesmoke;
+  color: black;
 }
 
 /* === Messages === */
