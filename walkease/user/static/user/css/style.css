@@ -129,8 +129,8 @@ form input, form textarea, form select, form input[type="date"] {
 .btn-update, .btn-cancel {
   display: inline-block;
   padding: 0.7rem 1.4rem;
-  background: #5c2d44;
-  color: #000;
+  background: #812552;
+  color: #faf9f9;
   border: none;
   border-radius: 5px;
   font-weight: bold;
