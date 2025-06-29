@@ -24,7 +24,7 @@ from walkease.cart.views import CustomLoginView, CustomSignupView, CustomLogoutV
 urlpatterns = [
     path("admin/", admin.site.urls),
 
-    # 🌟 Clean, top-level authentication URLs
+  
     path("signin/",  CustomLoginView.as_view(),  name="account_login"),
     path("signup/",  CustomSignupView.as_view(), name="account_signup"),
     path("signout/", CustomLogoutView,            name="account_logout"),
