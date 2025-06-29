@@ -108,6 +108,9 @@ class CustomLoginView(AllauthLoginView):
 
 
 def CustomLogoutView(request):
+    print("🔒 Reached CustomLogoutView — logging out")
     django_logout(request)
     request.session.flush()
-    return redirect("account_login") 
+    response = redirect("account_login")
+    response.delete_cookie("sessionid")  # ⛔️ blast that cookie
+    return response

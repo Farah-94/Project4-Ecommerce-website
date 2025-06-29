@@ -131,8 +131,9 @@ SITE_ID = 1
 
 # django-allauth
 
-ACCOUNT_AUTHENTICATION_METHOD = "username_email"  # 🔄 updated this line
-ACCOUNT_EMAIL_REQUIRED = True                      # ✅ optional: explicit email requirement
+ACCOUNT_LOGIN_METHODS = {"email", "username"}
+
+
 ACCOUNT_LOGOUT_REDIRECT_URL = "/signin/"
 ACCOUNT_SIGNUP_REDIRECT_URL = "/signin/"
 ACCOUNT_LOGIN_ON_SIGNUP = False
