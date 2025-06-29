@@ -87,6 +87,11 @@ from django.contrib.auth import logout as django_logout
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from allauth.account.views import SignupView as AllauthSignupView, LoginView as AllauthLoginView
+from django.http import HttpResponseRedirect
+from django.contrib.sessions.models import Session
+from django.contrib import messages
+
+
 
 # … your other cart views (cart_view, add_to_cart, etc.) go above …
 class CustomSignupView(AllauthSignupView):
@@ -102,15 +107,27 @@ class CustomSignupView(AllauthSignupView):
 
 class CustomLoginView(AllauthLoginView):
     template_name = "account/login.html"
-    redirect_authenticated_user = False   # ← do not auto‐redirect
+    redirect_authenticated_user = False
+
+    def dispatch(self, request, *args, **kwargs):
+        print("🎯 Reached login view")
+        print("👤 Authenticated?", request.user.is_authenticated)
+        return super().dispatch(request, *args, **kwargs)
+
     def get_success_url(self):
         return reverse("store:index")
 
 
+
 def CustomLogoutView(request):
-    print("🔒 Reached CustomLogoutView — logging out")
+    print("🔒 Logging out…")
     django_logout(request)
     request.session.flush()
-    response = redirect("account_login")
-    response.delete_cookie("sessionid")  # ⛔️ blast that cookie
+
+    response = HttpResponseRedirect(reverse("account_login"))
+    response.delete_cookie("sessionid", path="/")
+    response.delete_cookie("csrftoken", path="/")
+
+    # Optional: debug
+    print("✅ Session flushed, cookies cleared")
     return response

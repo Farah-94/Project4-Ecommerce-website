@@ -155,5 +155,6 @@ STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
+SESSION_ENGINE = "django.contrib.sessions.backends.db"  # ✅ default, reliable
 
 

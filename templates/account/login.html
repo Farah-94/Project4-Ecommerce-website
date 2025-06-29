@@ -20,8 +20,7 @@
       </ul>
     {% endif %}
 
-    <form method="POST" action="{% url 'account_login' %}"></form>
-   
+    <form method="POST" action="{% url 'account_login' %}">
       {% csrf_token %}
 
       <div class="form-group">
