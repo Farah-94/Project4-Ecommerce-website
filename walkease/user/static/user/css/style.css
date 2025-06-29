@@ -134,12 +134,15 @@ form input, form textarea, form select, form input[type="date"] {
   border: none;
   border-radius: 5px;
   font-weight: bold;
-  text-align: center;
+ 
   text-decoration: none;
   margin-right: 1rem;
   transition: background 0.3s ease;
 }
-
+.profile-actions {
+  text-align: center;
+  margin-top: 2rem;
+}
 .btn-update:hover, .btn-cancel:hover {
   background: #b06b8e;
   color: #000;
