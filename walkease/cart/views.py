@@ -91,9 +91,8 @@ from django.http import HttpResponseRedirect
 from django.contrib.sessions.models import Session
 from django.contrib import messages
 
-
-
 # … your other cart views (cart_view, add_to_cart, etc.) go above …
+
 class CustomSignupView(AllauthSignupView):
     template_name = "account/signup.html"
     redirect_authenticated_user = True
@@ -103,8 +102,6 @@ class CustomSignupView(AllauthSignupView):
         messages.success(self.request, "Account created! Please sign in below.")
         return redirect("account_login")  # Send them to the login page after signup
 
-
-
 class CustomLoginView(AllauthLoginView):
     template_name = "account/login.html"
     redirect_authenticated_user = False
@@ -112,23 +109,29 @@ class CustomLoginView(AllauthLoginView):
     def dispatch(self, request, *args, **kwargs):
         print("🎯 Reached login view")
         print("👤 Authenticated?", request.user.is_authenticated)
+        print("Session keys:", request.session.keys())
+        if request.user.is_authenticated:
+            print("Redirecting authenticated user to store:index")
+            return redirect("store:index")
         return super().dispatch(request, *args, **kwargs)
 
     def get_success_url(self):
         return reverse("store:index")
 
-
-
-
 def CustomLogoutView(request):
-    print("🔒 Logging out…")
+    print("🔒 CustomLogoutView hit at:", request.path)
+    # Log out the user using Django's logout
     django_logout(request)
+    # Flush the session to clear all data
     request.session.flush()
-
-    # Optionally clear cookies (still fine to keep)
-    response = render(request, "account/logout.html")
+    # Ensure all allauth-related session keys are cleared
+    for key in list(request.session.keys()):
+        if key.startswith('account_'):
+            del request.session[key]
+    # Redirect to the login page (instead of rendering logout.html)
+    messages.success(request, "You have been successfully logged out.")
+    response = redirect("account_login")
+    # Delete session and CSRF cookies
     response.delete_cookie("sessionid", path="/")
     response.delete_cookie("csrftoken", path="/")
-
-    print("✅ Session flushed, showing logout confirmation page")
     return response

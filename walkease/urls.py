@@ -19,11 +19,16 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.static import serve
 from walkease.cart.views import CustomLoginView, CustomSignupView, CustomLogoutView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-
+     path(
+      "favicon.ico",
+      serve,
+      {"path": "favicon.ico", "document_root": settings.BASE_DIR},
+    ),
   
     path("signin/",  CustomLoginView.as_view(),  name="account_login"),
     path("signup/",  CustomSignupView.as_view(), name="account_signup"),

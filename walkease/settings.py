@@ -138,7 +138,6 @@ ACCOUNT_LOGOUT_REDIRECT_URL = "/signin/"
 ACCOUNT_SIGNUP_REDIRECT_URL = "/signin/"
 ACCOUNT_LOGIN_ON_SIGNUP = False
 LOGIN_REDIRECT_URL = "/"
-ACCOUNT_SIGNUP_FIELDS = ["email", "username", "password1", "password2"]
 ACCOUNT_EMAIL_VERIFICATION = "optional"
 LOGIN_URL = "/signin/"
 LOGOUT_URL = "/signout/"
