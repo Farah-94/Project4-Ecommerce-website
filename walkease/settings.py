@@ -131,21 +131,39 @@ SITE_ID = 1
 
 # django-allauth
 
-ACCOUNT_LOGIN_METHODS = {"email", "username"}
+# ACCOUNT_LOGIN_METHODS = {"email", "username"}
 
-ACCOUNT_LOGOUT_ON_GET = True 
-ACCOUNT_LOGOUT_REDIRECT_URL = "/signin/"
-ACCOUNT_SIGNUP_REDIRECT_URL = "/signin/"
-ACCOUNT_LOGIN_ON_SIGNUP = False
-LOGIN_REDIRECT_URL = "/"
-ACCOUNT_EMAIL_VERIFICATION = "optional"
-LOGIN_URL = "/signin/"
-LOGOUT_URL = "/signout/"
+# ACCOUNT_LOGOUT_ON_GET = True 
+# ACCOUNT_LOGOUT_REDIRECT_URL = "/signin/"
+# ACCOUNT_SIGNUP_REDIRECT_URL = "/signin/"
+# ACCOUNT_LOGIN_ON_SIGNUP = False
+# LOGIN_REDIRECT_URL = "/"
+# ACCOUNT_EMAIL_VERIFICATION = "optional"
+# LOGIN_URL = "/signin/"
+# LOGOUT_URL = "/signout/"
 
 
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+# SECURE_SSL_REDIRECT = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+
+
+ACCOUNT_LOGIN_METHODS         = {"email", "username"}
+ACCOUNT_LOGOUT_ON_GET         = True
+ACCOUNT_LOGOUT_REDIRECT_URL   = "/signin/"
+ACCOUNT_SIGNUP_REDIRECT_URL   = "/signin/"
+ACCOUNT_LOGIN_ON_SIGNUP       = False
+ACCOUNT_EMAIL_VERIFICATION    = "optional"
+LOGIN_REDIRECT_URL            = "/"
+LOGIN_URL                     = "/signin/"
+
+# secure cookies, SSL in prod
+SECURE_SSL_REDIRECT           = True
+SESSION_COOKIE_SECURE         = True
+CSRF_COOKIE_SECURE            = True
+
+
+
 
 
 # STRIPE
