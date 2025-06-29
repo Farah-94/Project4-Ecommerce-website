@@ -33,20 +33,25 @@ def product_detail(request, product_id):
 def buy_product(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     review_form = ReviewForm(initial={"rating": 5})
+    sizes = ["6", "7", "8", "9", "10"]  # Send size options to template
 
     if request.method == "POST":
+        # Handle Add to Cart
         if request.POST.get("add_to_cart"):
             return redirect("cart:view_cart")
 
+        # Handle Review Submission
         elif request.POST.get("submit_review"):
             print("📝 REVIEW POST TRIGGERED on Heroku!")
             review_form = ReviewForm(request.POST)
+
             if review_form.is_valid():
                 review = review_form.save(commit=False)
                 review.product = product
                 review.user = request.user
                 review.display = True
                 review.save()
+
                 return redirect("store:buy_product", product_id=product.id)
             else:
                 print("❌ Review form errors:", review_form.errors)
@@ -55,7 +60,11 @@ def buy_product(request, product_id):
         "product": product,
         "reviews": product.reviews.filter(display=True),
         "review_form": review_form,
+        "sizes": sizes,
     })
+
+
+
 
 def contact(request):
     if request.method == "POST":

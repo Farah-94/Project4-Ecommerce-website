@@ -51,9 +51,9 @@
 
         <label for="size-select">Choose Size:</label>
         <select name="size" id="size-select">
-          {% for size in "6 7 8 9 10".split %}
-            <option value="{{ size }}">Size {{ size }}</option>
-          {% endfor %}
+          {% for size in sizes %}
+        <option value="{{ size }}">Size {{ size }}</option>
+         {% endfor %}
         </select>
 
         <button type="submit" name="add_to_cart">Add to Cart</button>
