@@ -98,7 +98,6 @@ class ProductAdmin(admin.ModelAdmin):
 # 4) ReviewAdmin
 # ------------------------------------------------------------------------------
 
-
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
     list_display  = ("product", "user", "rating", "display", "created_at")

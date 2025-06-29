@@ -1,5 +1,3 @@
-# walkease/store/forms.py
-
 from django import forms
 from .models import Review
 
@@ -18,3 +16,4 @@ class ReviewForm(forms.ModelForm):
             "rating": "Your Rating",
             "comment": "Your Review",
         }
+

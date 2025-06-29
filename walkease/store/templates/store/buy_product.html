@@ -17,7 +17,6 @@
 <body>
 <div class="product-listing-page">
 
-  <!-- HEADER -->
   <header>
     <h1 class="heading">Buy Product</h1>
     <nav class="breadcrumb">
@@ -27,59 +26,34 @@
     </nav>
   </header>
 
-  <!-- PRODUCT DETAILS -->
   <div class="product-details">
     <h1><strong><em>{{ product.name }}</em></strong></h1>
     <p><strong>Price:</strong> ${{ product.price }}</p>
 
-    <!-- IMAGE SLIDER -->
     <div class="product-slider">
       <button class="prev">‹</button>
       <div class="product-slides">
         {% if product.image %}
-          <img
-            class="slide"
-            src="{% static 'store/gallery/' %}{{ product.image|basename }}"
-            alt="{{ product.name }} (primary)"
-          />
+          <img class="slide" src="{% static 'store/gallery/' %}{{ product.image|basename }}" alt="{{ product.name }} (primary)" />
         {% endif %}
-
         {% for img in product.images.all %}
-          <img
-            class="slide"
-            src="{% static 'store/gallery/' %}{{ img.filename|basename }}"
-            alt="{{ product.name }} (gallery {{ forloop.counter }})"
-          />
+          <img class="slide" src="{% static 'store/gallery/' %}{{ img.filename|basename }}" alt="{{ product.name }} (gallery {{ forloop.counter }})" />
         {% endfor %}
       </div>
       <button class="next">›</button>
     </div>
 
-    <!-- ADD TO CART FORM -->
     {% if product.stock > 0 %}
-      <form
-        class="buy-form"
-        method="post"
-        action="{% url 'cart:add_to_cart' product.id %}"
-      >
+      <form class="buy-form" method="post" action="{% url 'cart:add_to_cart' product.id %}">
         {% csrf_token %}
         <label for="quantity-input">Quantity:</label>
-        <input
-          type="number"
-          id="quantity-input"
-          name="quantity"
-          min="1"
-          max="{{ product.stock }}"
-          value="1"
-        />
+        <input type="number" id="quantity-input" name="quantity" min="1" max="{{ product.stock }}" value="1" />
 
         <label for="size-select">Choose Size:</label>
         <select name="size" id="size-select">
-          <option value="6">Size 6</option>
-          <option value="7">Size 7</option>
-          <option value="8">Size 8</option>
-          <option value="9">Size 9</option>
-          <option value="10">Size 10</option>
+          {% for size in "6 7 8 9 10".split %}
+            <option value="{{ size }}">Size {{ size }}</option>
+          {% endfor %}
         </select>
 
         <button type="submit" name="add_to_cart">Add to Cart</button>
@@ -89,21 +63,23 @@
     {% endif %}
   </div>
 
-  <!-- VIEW CART LINK -->
   <a href="{% url 'cart:view_cart' %}" class="view-cart-button">View Cart</a>
 
-  <!-- REVIEWS SECTION -->
   <div class="reviews-section">
     <h2>Customer Reviews</h2>
-
     {% if reviews %}
       {% for review in reviews %}
         <div class="review">
-          <p>
-            <strong>{{ review.user.username|default:"Anonymous" }}</strong>
-            — {{ review.created_at|date:"F j, Y, H:i" }}
+          <p><strong>{{ review.user.username|default:"Anonymous" }}</strong> — {{ review.created_at|date:"F j, Y, H:i" }}</p>
+          <p class="rating-stars">
+            {% for i in "12345"|make_list %}
+              {% if review.rating|add:"0" >= i|add:"0" %}
+                <span class="star filled">★</span>
+              {% else %}
+                <span class="star">☆</span>
+              {% endif %}
+            {% endfor %}
           </p>
-          <p>Rating: {{ review.rating }} / 5</p>
           <p>{{ review.comment }}</p>
         </div>
       {% endfor %}
@@ -112,13 +88,10 @@
     {% endif %}
   </div>
 
-  <!-- REVIEW FORM SECTION -->
   <div class="review-form-section">
     <h2>Leave a Review</h2>
 
     {% if user.is_authenticated %}
-
-      <!-- Display review form errors -->
       {% if review_form.errors %}
         <ul class="form-errors">
           {% for field in review_form %}
@@ -134,29 +107,21 @@
 
       <form method="post">
         {% csrf_token %}
-
         <div class="form-field">
           {{ review_form.rating.label_tag }}<br />
-          {{ review_form.rating }}<br />
+          {{ review_form.rating }}
         </div>
-
         <div class="form-field">
           {{ review_form.comment.label_tag }}<br />
-          {{ review_form.comment }}<br />
+          {{ review_form.comment }}
         </div>
-
         <button type="submit" name="submit_review" value="1">Submit Review</button>
       </form>
-
     {% else %}
-      <p>
-        Please <a href="{% url 'account_login' %}?next={{ request.path }}">sign in</a>
-        to leave a review.
-      </p>
+      <p>Please <a href="{% url 'account_login' %}?next={{ request.path }}">sign in</a> to leave a review.</p>
     {% endif %}
   </div>
 
-  <!-- JS -->
   <script src="{% static 'store/js/script.js' %}" defer></script>
 </div>
 </body>
