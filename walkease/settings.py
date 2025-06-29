@@ -133,15 +133,14 @@ SITE_ID = 1
 
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"  # 🔄 updated this line
 ACCOUNT_EMAIL_REQUIRED = True                      # ✅ optional: explicit email requirement
-ACCOUNT_LOGOUT_REDIRECT_URL = "/cart/signin/"
-ACCOUNT_SIGNUP_REDIRECT_URL = "/cart/signin/"
+ACCOUNT_LOGOUT_REDIRECT_URL = "/signin/"
+ACCOUNT_SIGNUP_REDIRECT_URL = "/signin/"
 ACCOUNT_LOGIN_ON_SIGNUP = False
 LOGIN_REDIRECT_URL = "/"
 ACCOUNT_SIGNUP_FIELDS = ["email", "username", "password1", "password2"]
 ACCOUNT_EMAIL_VERIFICATION = "optional"
-LOGIN_URL = "/cart/signin/"
-
-LOGOUT_URL = "/cart/signout/"
+LOGIN_URL = "/signin/"
+LOGOUT_URL = "/signout/"
 
 
 SECURE_SSL_REDIRECT = True
