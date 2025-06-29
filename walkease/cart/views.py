@@ -110,4 +110,4 @@ class CustomLoginView(AllauthLoginView):
 def CustomLogoutView(request):
     django_logout(request)
     request.session.flush()
-    return redirect("account_login")
+    return redirect("account_login") 

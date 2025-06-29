@@ -19,42 +19,24 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from walkease.cart.views import (
-    CustomLoginView,
-    CustomSignupView,
-    CustomLogoutView,
-)
+from walkease.cart.views import CustomLoginView, CustomSignupView, CustomLogoutView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
 
-    # --- Your cart-styled auth endpoints in the root namespace ---
-    path(
-        "cart/signin/",
-        CustomLoginView.as_view(),    # CBV LoginView
-        name="account_login",
-    ),
-    path(
-        "cart/signup/",
-        CustomSignupView.as_view(),   # CBV SignupView
-        name="account_signup",
-    ),
-    path(
-        "cart/signout/",
-        CustomLogoutView,             # function-based logout
-        name="account_logout",
-    ),
+    # 🌟 Clean, top-level authentication URLs
+    path("signin/",  CustomLoginView.as_view(),  name="account_login"),
+    path("signup/",  CustomSignupView.as_view(), name="account_signup"),
+    path("signout/", CustomLogoutView,           name="account_logout"),
 
-    # --- Now your regular cart URLs (no auth in here) ---
-    path("cart/", include("walkease.cart.urls")),
-
-    # --- All the rest of allauth’s built-ins (password reset, social, etc.) ---
-    path("accounts/", include("allauth.urls")),
-
-    # --- Other apps ---
+    # Other apps
+    path("cart/",     include("walkease.cart.urls")),
     path("user/",     include("walkease.user.urls",    namespace="user")),
-    path("",          include("walkease.store.urls",   namespace="store")),
     path("checkout/", include("walkease.checkout.urls",namespace="checkout")),
+    path("",          include("walkease.store.urls",   namespace="store")),
+
+    # Keep Allauth for password reset, email confirm, social login, etc.
+    path("accounts/", include("allauth.urls")),
 ]
 
 if settings.DEBUG:
