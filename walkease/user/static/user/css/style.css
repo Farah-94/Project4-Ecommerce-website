@@ -28,13 +28,13 @@ nav ul {
 }
 
 nav ul li a {
-  color: #fff;
+  color: #070707;
   font-weight: bold;
   transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-  color: #a56887; /* Pink hover */
+  color: #811f50; /* Pink hover */
 }
 
 /* === Banner Section === */
