@@ -216,8 +216,8 @@ header {
   --bg: #ffffff;
   --black: #000000;
   --gray: #444444;
-  --pink: #e91e63;
-  --pink-dark: #c2185b;
+  --pink: #8e183f;
+  --pink-dark: #58122e;
   --border: #eeeeee;
   --radius: 4px;
   --max-width: 800px;
@@ -400,7 +400,7 @@ footer {
 
 /* Page heading */
 .product-listing-page .heading {
-  font-family: 'Lora', serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 2rem;
   color: var(--text);
   margin: 1rem;
