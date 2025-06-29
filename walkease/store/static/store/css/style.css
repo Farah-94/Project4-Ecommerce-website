@@ -368,8 +368,8 @@ footer {
   --text: #000000;
   --text-alt: #333333;
   --border: #eeeeee;
-  --pink: #e91e63;
-  --pink-dark: #d81b60;
+  --pink: #92294c;
+  --pink-dark: #671d38;
   --max-slide-height: 350px;
 }
 
@@ -661,7 +661,7 @@ footer {
 
 
 /* store/static/store/css/style.css */
-
+/* ----------productlist-------------- */
 /* Color palette */
 :root {
   --bg: #ffffff;
