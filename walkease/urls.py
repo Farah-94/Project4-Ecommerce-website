@@ -27,16 +27,15 @@ urlpatterns = [
     # 🌟 Clean, top-level authentication URLs
     path("signin/",  CustomLoginView.as_view(),  name="account_login"),
     path("signup/",  CustomSignupView.as_view(), name="account_signup"),
-    path("signout/", CustomLogoutView,           name="account_logout"),
+    path("signout/", CustomLogoutView,            name="account_logout"),
 
+    path("accounts/", include("allauth.urls")),
     # Other apps
-    path("cart/",     include("walkease.cart.urls")),
-    path("user/",     include("walkease.user.urls",    namespace="user")),
+   path("cart/",     include("walkease.cart.urls",     namespace="cart")),
+   path("user/",     include("walkease.user.urls",    namespace="user")),
     path("checkout/", include("walkease.checkout.urls",namespace="checkout")),
     path("",          include("walkease.store.urls",   namespace="store")),
-
-    # Keep Allauth for password reset, email confirm, social login, etc.
-    path("accounts/", include("allauth.urls")),
+    
 ]
 
 if settings.DEBUG:
