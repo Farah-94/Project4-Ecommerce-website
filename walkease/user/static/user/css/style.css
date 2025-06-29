@@ -15,7 +15,7 @@ body {
 /* === Navigation Bar === */
 header {
   background-color: #111;
-  border-bottom: 2px solid #783255;
+  border-bottom: 2px solid #782950;
 }
 
 nav ul {
@@ -75,7 +75,8 @@ nav ul li a:hover {
 .profile-info, .profile-update-form {
   flex: 1;
   min-width: 280px;
-  background-color: #111;
+  background-color: white;
+  color: #111;
   padding: 1.5rem;
   border: 1px solid #444;
   border-radius: 10px;
