@@ -5,12 +5,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Signed Out – WalkEase</title>
-  {# templates/account/logout.html #}
+  
   {% load static url %}
   <link rel="stylesheet" href="{% static 'cart/css/style.css' %}">
 </head>
 <body>
-  <div class="card">
+  <div class="logout-container">
     <h2>You’re signed out</h2>
     <a href="{% url 'account_login' %}">Sign In Again</a>
   </div>
