@@ -28,48 +28,47 @@
   </nav>
 </header>
 
+<main class="profile-page">
+  <section class="profile-banner">
+    <h1>Welcome, {{ user.first_name|default:user.username }}!</h1>
+  </section>
 
-  <main class="profile-page">
-    <section class="profile-banner">
-      <h1>Welcome, {{ user.first_name|default:user.username }}!</h1>
-    </section>
+  <section class="profile-container">
+    <div class="profile-avatar">
+      {% load static %}
+      {% if user.profile.avatar %}
+        <img src="{{ user.profile.avatar.url }}" alt="{{ user.username }}'s avatar">
+      {% else %}
+        <img src="{% static 'user/gallery/default_avatar.jpg' %}" alt="Default Avatar">
+      {% endif %}
+    </div>
 
-    <section class="profile-container">
-      <div class="profile-avatar">
-        {% load static %}
-        {% if user.profile.avatar %}
-            <img src="{{ user.profile.avatar.url }}" alt="{{ user.username }}'s avatar">
-        {% else %}
-            <img src="{% static 'user/gallery/default_avatar.jpg' %}" alt="Default Avatar">
-        {% endif %}
-      </div>
+    <div class="profile-info">
+      <h2>Your Information</h2>
+      <p><strong>Username:</strong> {{ user.username }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      {% if user.profile.bio %}
+        <p><strong>Bio:</strong> {{ user.profile.bio }}</p>
+      {% else %}
+        <p><strong>Bio:</strong> Not provided yet.</p>
+      {% endif %}
+      {% if user.profile.address %}
+        <p><strong>Address :</strong> {{ user.profile.address }}</p>
+      {% endif %}
+      {% if user.profile.birth_date %}
+        <p><strong>Birth Date:</strong> {{ user.profile.birth_date|date:"F j, Y" }}</p>
+      {% endif %}
+    </div>
+  </section>
 
-      <div class="profile-info">
-        <h2>Your Information</h2>
-        <p><strong>Username:</strong> {{ user.username }}</p>
-        <p><strong>Email:</strong> {{ user.email }}</p>
-        {% if user.profile.bio %}
-          <p><strong>Bio:</strong> {{ user.profile.bio }}</p>
-        {% else %}
-          <p><strong>Bio:</strong> Not provided yet.</p>
-        {% endif %}
-        {% if user.profile.location %}
-          <p><strong>Address :</strong> {{ user.profile.location }}</p>
-        {% endif %}
-        {% if user.profile.birth_date %}
-          <p><strong>Birth Date:</strong> {{ user.profile.birth_date|date:"F j, Y" }}</p>
-        {% endif %}
-      </div>
-    </section>
+  <section class="profile-actions">
+    <a href="{% url 'user:update_profile' %}" class="btn-update">Edit Profile</a>
+  </section>
+</main>
 
-    <section class="profile-actions">
-      <a href="{% url 'user:update_profile' %}" class="btn-update">Edit Profile</a>
-    </section>
+<footer>
+  <p>&copy; {% now "Y" %} Walkease. All rights reserved.</p>
+</footer>
 
-  </main>
-
-  <footer>
-    <p>&copy; {% now "Y" %} Walkease. All rights reserved.</p>
-  </footer>
 </body>
 </html>
