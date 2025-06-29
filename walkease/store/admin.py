@@ -97,9 +97,12 @@ class ProductAdmin(admin.ModelAdmin):
 # ------------------------------------------------------------------------------
 # 4) ReviewAdmin
 # ------------------------------------------------------------------------------
+
+
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
-    list_display  = ("product", "user", "rating", "created_at")
-    list_filter   = ("rating", "created_at")
+    list_display  = ("product", "user", "rating", "display", "created_at")
+    list_filter   = ("rating", "display", "created_at")
     search_fields = ("comment", "user__username", "product__name")
+    list_editable = ("display",)
 

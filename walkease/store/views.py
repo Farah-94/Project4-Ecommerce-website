@@ -27,16 +27,17 @@ def product_detail(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     return render(request, "store/product_detail.html", {"product": product})
 
+
+
 @login_required
 def buy_product(request, product_id):
     product = get_object_or_404(Product, id=product_id)
-    review_form = ReviewForm()
 
     if request.method == "POST":
+        # Handle cart submission
         if request.POST.get("add_to_cart"):
             quantity = request.POST.get("quantity", 1)
             size = request.POST.get("size", "")
-
             try:
                 quantity = int(quantity)
                 if quantity < 1:
@@ -46,10 +47,14 @@ def buy_product(request, product_id):
             except (ValueError, ValidationError) as e:
                 return HttpResponse(str(e), status=400)
 
-            order, created = Order.objects.get_or_create(
+            order, _ = Order.objects.get_or_create(
                 user=request.user,
                 status="Cart",
-                defaults={"shipping_address": "", "payment_method": "", "total_price": 0}
+                defaults={
+                    "shipping_address": "",
+                    "payment_method": "",
+                    "total_price": 0,
+                }
             )
 
             existing_item = order.items.filter(product=product, size=size).first()
@@ -60,24 +65,29 @@ def buy_product(request, product_id):
                 item = OrderItem.objects.create(product=product, quantity=quantity, size=size)
                 order.items.add(item)
 
-            # Recalculate total
-            order.total_price = sum(item.product.price * item.quantity for item in order.items.all())
+            order.total_price = sum(
+                item.product.price * item.quantity for item in order.items.all()
+            )
             order.save()
             return redirect("cart:view_cart")
 
+        # Handle review submission
         elif request.POST.get("submit_review"):
             review_form = ReviewForm(request.POST)
             if review_form.is_valid():
                 review = review_form.save(commit=False)
                 review.product = product
                 review.user = request.user
-                review.display = review_form.cleaned_data.get("display", False)
+                review.display = True  # always mark new reviews as public by default
                 review.save()
                 return redirect("store:buy_product", product_id=product.id)
+    else:
+        # Pre-fill rating=5 on new review form
+        review_form = ReviewForm(initial={"rating": 5})
 
     return render(request, "store/buy_product.html", {
         "product":     product,
-        "reviews":     product.reviews.filter(display=True).order_by("-created_at"),
+        "reviews":     product.reviews.filter(display=True),
         "review_form": review_form,
     })
 
