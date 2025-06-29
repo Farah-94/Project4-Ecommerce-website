@@ -14,13 +14,13 @@
   <div class="logout-container">
     <div class="card">
       <h2>You’re signed out</h2>
-      <a href="{% url 'account_login' %}">Sign In Again</a>
+      <a class="btn" href="{% url 'account_login' %}">Sign In Again</a>
     </div>
   </div>
   <script>
     setTimeout(() => {
       window.location.href = "{% url 'account_login' %}";
-    }, 3000);
+    }, 5000);
   </script>
 </body>
 </html>
