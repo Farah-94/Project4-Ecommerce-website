@@ -11,8 +11,10 @@
 </head>
 <body>
   <div class="logout-container">
-    <h2>You’re signed out</h2>
-    <a href="{% url 'account_login' %}">Sign In Again</a>
+    <div class="card">
+      <h2>You’re signed out</h2>
+      <a href="{% url 'account_login' %}">Sign In Again</a>
+    </div>
   </div>
   <script>
     setTimeout(() => {
