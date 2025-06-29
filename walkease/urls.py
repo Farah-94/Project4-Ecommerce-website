@@ -31,8 +31,8 @@ urlpatterns = [
 
     path("accounts/", include("allauth.urls")),
     # Other apps
-   path("cart/",     include("walkease.cart.urls",     namespace="cart")),
-   path("user/",     include("walkease.user.urls",    namespace="user")),
+    path("cart/",     include("walkease.cart.urls",     namespace="cart")),
+    path("user/",     include("walkease.user.urls",    namespace="user")),
     path("checkout/", include("walkease.checkout.urls",namespace="checkout")),
     path("",          include("walkease.store.urls",   namespace="store")),
     
