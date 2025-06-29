@@ -625,24 +625,6 @@ footer {
   color: #811c44;
 }
 
-/* ========== Product Details ========== */
-.product-listing-page .product-details {
-  background: #fff;
-  border: 1px solid #eaeaea;
-  border-radius: 6px;
-  padding: 2rem;
-  margin-bottom: 2rem;
-}
-.product-listing-page .product-details h1 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-.product-listing-page .product-details p:first-of-type {
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
-}
-
 /* ========== Image Slider ========== */
 .product-listing-page .product-slider {
   position: relative;
@@ -685,6 +667,24 @@ footer {
 .product-listing-page .prev { left: 0.5rem; }
 .product-listing-page .next { right: 0.5rem; }
 
+/* ========== Product Details ========== */
+.product-listing-page .product-details {
+  background: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 6px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+.product-listing-page .product-details h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.product-listing-page .product-details p:first-of-type {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
 /* ========== Buy Form ========== */
 .product-listing-page .buy-form {
   display: flex;
@@ -720,7 +720,7 @@ footer {
   background: #682741;
 }
 
-/* ========== View Cart Link ========== */
+/* ========== View Cart Button ========== */
 .product-listing-page .view-cart-button {
   display: block;
   width: fit-content;
@@ -757,6 +757,17 @@ footer {
 .product-listing-page .review p strong {
   color: #111;
 }
+.product-listing-page .rating-stars {
+  font-size: 1.2rem;
+  color: #e91e63;
+  letter-spacing: 0.1rem;
+}
+.product-listing-page .star {
+  color: #ccc;
+}
+.product-listing-page .star.filled {
+  color: #e91e63;
+}
 
 /* ========== Review Form ========== */
 .product-listing-page .review-form-section .form-field {
@@ -789,7 +800,27 @@ footer {
   background: #843052;
 }
 
-/* ========== Error Messages ========== */
+/* ========== Radio Button Rating Layout ========== */
+.product-listing-page .form-field ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0.25rem 0;
+  list-style: none;
+}
+.product-listing-page .form-field ul li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.product-listing-page .form-field input[type="radio"] {
+  accent-color: #e91e63;
+  transform: scale(1.1);
+  margin: 0;
+}
+
+/* ========== Form Error Messages ========== */
 .product-listing-page .form-errors {
   background: #ffe6eb;
   border: 1px solid #823e59;
@@ -816,7 +847,7 @@ footer {
   }
 }
 
-
+/* ---------------productlist----------------- */
 
 :root {
   --bg: #ffffff;
