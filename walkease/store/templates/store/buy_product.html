@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Buy Product</title>
 
   {% load static file_extras %}
   {% load static %}
 
   <!-- CSS -->
-  <link rel="stylesheet" href="{% static 'store/css/style.css' %}" />
+  <link rel="stylesheet" href="{% static 'store/css/style.css' %}"/>
 
   <!-- Optional: Medium-Zoom -->
   <script src="https://unpkg.com/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
@@ -34,10 +34,10 @@
       <button class="prev">‹</button>
       <div class="product-slides">
         {% if product.image %}
-          <img class="slide" src="{% static 'store/gallery/' %}{{ product.image|basename }}" alt="{{ product.name }} (primary)" />
+          <img class="slide" src="{% static 'store/gallery/' %}{{ product.image|basename }}" alt="{{ product.name }} (primary)"/>
         {% endif %}
         {% for img in product.images.all %}
-          <img class="slide" src="{% static 'store/gallery/' %}{{ img.filename|basename }}" alt="{{ product.name }} (gallery {{ forloop.counter }})" />
+          <img class="slide" src="{% static 'store/gallery/' %}{{ img.filename|basename }}" alt="{{ product.name }} (gallery {{ forloop.counter }})"/>
         {% endfor %}
       </div>
       <button class="next">›</button>
@@ -47,7 +47,7 @@
       <form class="buy-form" method="post" action="{% url 'cart:add_to_cart' product.id %}">
         {% csrf_token %}
         <label for="quantity-input">Quantity:</label>
-        <input type="number" id="quantity-input" name="quantity" min="1" max="{{ product.stock }}" value="1" />
+        <input type="number" id="quantity-input" name="quantity" min="1" max="{{ product.stock }}" value="1"/>
 
         <label for="size-select">Choose Size:</label>
         <select name="size" id="size-select">
@@ -108,11 +108,11 @@
       <form method="post">
         {% csrf_token %}
         <div class="form-field">
-          {{ review_form.rating.label_tag }}<br />
+          {{ review_form.rating.label_tag }}<br/>
           {{ review_form.rating }}
         </div>
         <div class="form-field">
-          {{ review_form.comment.label_tag }}<br />
+          {{ review_form.comment.label_tag }}<br/>
           {{ review_form.comment }}
         </div>
         <button type="submit" name="submit_review" value="1">Submit Review</button>
