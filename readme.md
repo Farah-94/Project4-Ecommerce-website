@@ -137,7 +137,7 @@ Walkease features a minimal, clean aesthetic:
 
 (index.html)[walkease/store/static/store/gallery/index_validation.png]
 (productlist.html)[walkease/store/static/store/gallery/productlist_validation.png]
-(buy_product.html)[]
+(buy_product.html)[walkease/store/static/store/gallery/buy_product_validation.png]
 (cart.html)[]
 (checkout.html)[]
 (order_success.html)[]

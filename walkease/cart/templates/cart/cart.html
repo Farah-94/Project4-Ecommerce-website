@@ -31,8 +31,7 @@
             {% with item.product.image|basename as filename %}
               <img
                 src="{% static 'store/gallery/'|add:filename %}"
-                alt="{{ item.product.name }}"
-              />
+                alt="{{ item.product.name }}">
             {% endwith %}
           {% endif %}
 
