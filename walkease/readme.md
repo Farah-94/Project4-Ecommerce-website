@@ -102,6 +102,18 @@ Walkease features a minimal, clean aesthetic:
 - Consistent button styles and form inputs.
 - Clear hierarchy using headings, subheadings, and highlighted call-to-action elements.
 
+(index.html)[]
+(productlist.html)[]
+(buy_product.html)[]
+(cart.html)[]
+(checkout.html)[]
+(order_success.html)[]
+(profile.html)[]
+(update_profile.html)[]
+(admin_profile.html)[]
+(login.html)[]
+(signup.html)
+
 **Wireframes**
 
 ## Colour Scheme
@@ -122,6 +134,20 @@ Walkease features a minimal, clean aesthetic:
 
 ## Testing
 (Test Plan)[https://1drv.ms/w/c/e1af83f369e97fb7/Ebm6ubvVfndNrFqgfDX9BNkBCy3iWzNmigQ9enYfK_vZkg?e=EYCRUs]
+
+(index.html)[]
+(productlist.html)[]
+(buy_product.html)[]
+(cart.html)[]
+(checkout.html)[]
+(order_success.html)[]
+(profile.html)[]
+(update_profile.html)[]
+(admin_profile.html)[]
+(login.html)[]
+(signup.html)
+
+
 
 - Stripe test cards (e.g., 4242 4242 4242 4242 for success, 4000 0000 0000 9995 for insufficient funds).
 
