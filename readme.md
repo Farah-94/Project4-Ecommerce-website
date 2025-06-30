@@ -102,17 +102,17 @@ Walkease features a minimal, clean aesthetic:
 - Consistent button styles and form inputs.
 - Clear hierarchy using headings, subheadings, and highlighted call-to-action elements.
 
-(index.html)[]
-(productlist.html)[]
-(buy_product.html)[]
-(cart.html)[]
-(checkout.html)[]
-(order_success.html)[]
-(profile.html)[]
-(update_profile.html)[]
-(admin_profile.html)[]
-(login.html)[]
-(signup.html)
+(index.html)[walkease/store/static/store/gallery/homepage.png]
+(productlist.html)[walkease/store/static/store/gallery/productlist.png]
+(buy_product.html)[walkease/store/static/store/gallery/buy_product.png]
+(cart.html)[walkease/store/static/store/gallery/cart.png]
+(checkout.html)[walkease/store/static/store/gallery/checkout.png]
+(order_success.html)[walkease/store/static/store/gallery/order_success.png]
+(profile.html)[walkease/store/static/store/gallery/profile.png]
+(update_profile.html)[walkease/store/static/store/gallery/update_profile.png]
+(admin_profile.html)[walkease/store/static/store/gallery/admin_profile.png]
+(login.html)[walkease/store/static/store/gallery/signin.png]
+(signup.html)[walkease/store/static/store/gallery/signup.png]
 
 **Wireframes**
 
