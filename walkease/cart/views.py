@@ -89,14 +89,23 @@ from django.shortcuts    import render
 from django.contrib     import messages
 from allauth.account.views import SignupView as AllauthSignupView
 from allauth.account.views import LoginView  as AllauthLoginView
+from django.shortcuts import redirect
+from django.contrib.messages import get_messages
+
+
 
 class CustomSignupView(AllauthSignupView):
     template_name = "account/signup.html"
     redirect_authenticated_user = True
 
-    def get_success_url(self):
+    def form_valid(self, form):
+        response = super().form_valid(form)
+
+        # Force logout after signup to avoid weird sessions
+        self.request.session.flush()
+
         messages.success(self.request, "Account created! Please sign in below.")
-        return reverse("account_login")
+        return redirect(reverse("account_login"))
 
     
 class CustomLoginView(AllauthLoginView):
@@ -110,5 +119,7 @@ def CustomLogoutView(request):
     print("🔒 CustomLogoutView hit at:", request.path)
     django_logout(request)
     request.session.flush()
+    storage = get_messages(request)
+    list(storage)  # Force-clear old messages
     messages.success(request, "You’ve been signed out!")
     return render(request, "account/logout.html")
