@@ -149,9 +149,6 @@ SITE_ID = 1
 # LOGOUT_URL = "/signout/"
 
 
-# SECURE_SSL_REDIRECT = True
-# SESSION_COOKIE_SECURE = True
-# CSRF_COOKIE_SECURE = True
 
 
 ACCOUNT_LOGIN_METHODS         = {"email", "username"}

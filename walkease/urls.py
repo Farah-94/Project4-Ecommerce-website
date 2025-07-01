@@ -31,7 +31,7 @@ urlpatterns = [
     ),
   
     path("signin/",  CustomLoginView.as_view(),  name="account_login"),
-    path("signup/",  CustomSignupView.as_view(), name="account_signup"),
+    path("signup/",  CustomSignupView.as_view(), name="custom_signup"),
     path("signout/", CustomLogoutView, name="signout"),
     path("accounts/", include("allauth.urls")),
     # Other apps
