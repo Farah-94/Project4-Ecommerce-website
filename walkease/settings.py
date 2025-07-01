@@ -151,7 +151,7 @@ SITE_ID = 1
 
 
 
-ACCOUNT_LOGIN_METHODS         = {"email", "username"}
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 ACCOUNT_LOGOUT_ON_GET         = True
 ACCOUNT_LOGOUT_REDIRECT_URL   = "/signin/"
 ACCOUNT_SIGNUP_REDIRECT_URL   = "/signin/"
@@ -165,6 +165,10 @@ SECURE_SSL_REDIRECT           = True
 SESSION_COOKIE_SECURE         = True
 CSRF_COOKIE_SECURE            = True
 
+if DEBUG:
+    CSRF_COOKIE_SECURE = False
+    SESSION_COOKIE_SECURE = False
+    SECURE_SSL_REDIRECT = False
 
 
 

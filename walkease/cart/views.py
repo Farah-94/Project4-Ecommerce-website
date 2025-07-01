@@ -94,12 +94,9 @@ class CustomSignupView(AllauthSignupView):
     template_name = "account/signup.html"
     redirect_authenticated_user = True
 
-    def form_valid(self, form):
-        # Create the user but don't log them in
-        response = super().form_valid(form)
+    def get_success_url(self):
         messages.success(self.request, "Account created! Please sign in below.")
         return reverse("account_login")
-    
 
     
 class CustomLoginView(AllauthLoginView):
