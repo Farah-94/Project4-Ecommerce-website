@@ -21,7 +21,7 @@
     </div>
 {% endif %}
 
-<form method="POST" action="{% url 'c_signup' %}">
+<form method="POST" action="{% url 'custom_signup' %}">
     {% csrf_token %}  <!-- ✅ Prevents CSRF attacks -->
 
   <label for="username">Username:</label>
