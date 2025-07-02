@@ -153,8 +153,8 @@ Walkease features a minimal, clean aesthetic:
 
 ## Programme Used
 -  Django 5.2.1, Python 3.12
--  HTML5, CSS3, JavaScript (ES6+)
--  Stripe.js v3, Stripe Python SDK
+-  HTML5, CSS3, JavaScript
+-  Stripe
 -  Heroku, WhiteNoise
 -  Git, GitHub
 -  PostgreSQL (via Heroku Postgres)
