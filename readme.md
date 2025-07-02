@@ -102,7 +102,7 @@ Walkease features a minimal, clean aesthetic:
 - Consistent button styles and form inputs.
 - Clear hierarchy using headings, subheadings, and highlighted call-to-action elements.
 
-(index.html)[store/static/store/gallery/homepage.png]
+(index.html)[/walkease/store/static/store/gallery/homepage.png]
 (productlist.html)[/store/static/store/gallery/productlist.png]
 (buy_product.html)[/store/static/store/gallery/buy_product.png]
 (cart.html)[/store/static/store/gallery/cart.png]
