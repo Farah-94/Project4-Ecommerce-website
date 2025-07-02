@@ -111,7 +111,6 @@ Walkease features a minimal, clean aesthetic:
  - [signin.html](walkease/store/static/store/gallery/signin.png)
  - [signup.html](walkease/store/static/store/gallery/signup.png)
  - [profile.html](walkease/store/static/store/gallery/profile.png)
- - [admin_profile.html](walkease/store/static/store/gallery/admin_profile.png)
  - [update_profile.html](walkease/store/static/store/gallery/update_profile.png)
 
 **Wireframes**
