@@ -34,39 +34,39 @@ The goal of Walkease is to deliver a polished, user-friendly online store that s
 ## Deployment
 How to Run the Project Locally
 **Github**
-A Github account. Create a Github Account [here](https://github.com join)
+A Github account. Create a Github Account [here](https://github.com join).
 Use the Chrome browser then follow these steps:
-Install the Gitpod Browser Extension for Chrome
-After installation, restart the browser
-Log into Gitpod with your Gitpod account
-Navigate to the Project Github repository
-Click the green "Gitpod" button in the top right corner of the repository
-This will trigger a new Gitpod workspace to be created from the code in Github where you can work locally.
-To work on the project code within a local IBE such as VSCode, Pycharm, etc.
+ 1. Install the Gitpod Browser Extension for Chrome.
+ 2. After installation, restart the browser.
+ 3. Log into Gitpod with your Gitpod account.
+ 4. Navigate to the Project Github repository.
+ 5. Click the green "Gitpod" button in the top right corner of the repository
+ 6. This will trigger a new Gitpod workspace to be created from the code in Github where you can work locally.
+ 7. To work on the project code within a local IBE such as VSCode, Pycharm, etc.
 Follow the link to the Project Repository
-Under the repository name, click "clone or download".
-In the clone with HTTPs section, copy the clone URL for the repository
-In your local IBE, open the terminal
+ 8. Under the repository name, click "clone or download".
+ 9. In the clone with HTTPs section, copy the clone URL for the repository.
+ 10. In your local IBE, open the terminal
 Change the current working directory to the location where you want the cloned directory to be made.
-Type git clone, and then paste the URL you copied in Step 3: https://github.com/Farah-94/shoes.git
+Type git clone, and then paste the URL you copied in Step 3: https://github.com/Farah-94/Project4-Ecommerce-website.git
 Press Enter. Your local clone will be created.
 
 **Heroku Deployment**
-Login to Heroku.
-In your Heroku dashboard, click "New" and then "Create new app".
-Provide a unique name for your app (e.g., walkease) and choose your region.
-Go to the "Resources" tab within your Heroku app.
+ 1. Login to Heroku.
+ 2. In your Heroku dashboard, click "New" and then "Create new app".
+ 3. Provide a unique name for your app (e.g., walkease) and choose your region.
+ 4. Go to the "Resources" tab within your Heroku app.
 Under Dynos, select the appropriate plan. Heroku’s Eco Dynos help you stay within a low-cost, sustainable usage model.
-Connect your app to Github
-Navigate to the "Deploy" tab in your Heroku app dashboard.
-If prompted, connect your GitHub account.
-Write in the search "shoes".
+ 5. Connect your app to Github.
+ 6. Navigate to the "Deploy" tab in your Heroku app dashboard.
+ 7. If prompted, connect your GitHub account.
+Write in the search "Project4-Ecommerce-website".
 Once found, click "Connect" to link your repository.
-After linking, scroll down in the Deploy section.
+ 8. After linking, scroll down in the Deploy section.
 Click on the automatic deploy( automatic update after pushing code to github).
-Click "Deploy Branch" to manually deploy your current branch.
-Review the build logs to ensure that the deployment completes successfully.
-https://git.heroku.com/walkease-app.git git url created.
+ 9. Click "Deploy Branch" to manually deploy your current branch.
+ 10. Review the build logs to ensure that the deployment completes successfully.
+https://git.heroku.com/walkease-website.git git url created.
 
 ## User Experience
 ### First-time Visitor
@@ -123,8 +123,8 @@ Walkease features a minimal, clean aesthetic:
 
 ## Colour Scheme
 - **Primary:** Black, white and pink
-- **Accent:**rgb(97, 24, 84) (Vibrant Green) for buttons and links
-- **Background:** #F8F9FA (Light Grey) for page backgrounds
+- **Accent:**rgb(97, 24, 84) for buttons and links
+- **Background:** white for page backgrounds
 - **Text:** black and white
 
 ## Typography
@@ -136,6 +136,9 @@ Walkease features a minimal, clean aesthetic:
 - High-resolution product photos with consistent aspect ratios.
 - On-page banners showcasing new arrivals or promotions.
 - Placeholder graphics sourced from Unsplash and customized with brand colors.
+
+ - [Website Home page Image](walkease/store/static/store/gallery/webfront.png)
+ - [Product](walkease/store/static/store/gallery/heels.jpg)
 
 ## Testing
 [Test Plan](https://1drv.ms/w/c/e1af83f369e97fb7/Ebm6ubvVfndNrFqgfDX9BNkBCy3iWzNmigQ9enYfK_vZkg?e=EYCRUs)
