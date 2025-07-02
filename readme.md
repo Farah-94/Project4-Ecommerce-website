@@ -134,17 +134,17 @@ Walkease features a minimal, clean aesthetic:
 ## Testing
 (Test Plan)[https://1drv.ms/w/c/e1af83f369e97fb7/Ebm6ubvVfndNrFqgfDX9BNkBCy3iWzNmigQ9enYfK_vZkg?e=EYCRUs]
 
-[index.html](walkease/store/static/store/gallery/index_validation.png)
-[productlist.html](walkease/store/static/store/gallery/productlist_validation.png)
-[buy_product.html](walkease/store/static/store/gallery/buy_product_validation.png)
-(cart.html)[]
-(checkout.html)[]
-(order_success.html)[]
-(profile.html)[]
-(update_profile.html)[]
-(admin_profile.html)[]
-(login.html)[]
-(signup.html)
+ - [index.html](walkease/store/static/store/gallery/index_validation.png)
+ - [productlist.html](walkease/store/static/store/gallery/productlist_validation.png)
+ - [buy_product.html](walkease/store/static/store/gallery/buy_product_validation.png)
+ - [cart.html]()
+ - [checkout.html]()
+ - [order_success.html]()
+ - [profile.html]()
+ - [update_profile.html]()
+ - [admin_profile.html]()
+ - [login.html]()
+ - [signup.html]()
 
 
 
