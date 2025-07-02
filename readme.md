@@ -15,7 +15,7 @@
 ---
 
 ## Introduction
-WalkEase is a fully responsive, user-friendly e-commerce website designed for selling shoes online. Built with Django, the project showcases modern development practices and a clean, modular architecture by dividing functionality into four dedicated apps:
+[WalkEase]([index.html](walkease/store/static/store/gallery/homepage.png)) is a fully responsive, user-friendly e-commerce website designed for selling shoes online. Built with Django, the project showcases modern development practices and a clean, modular architecture by dividing functionality into four dedicated apps:
 
 **Store App** – Displays product listings, categories, detailed product pages, and supports customer reviews.
 
@@ -114,6 +114,12 @@ Walkease features a minimal, clean aesthetic:
  - [update_profile.html](walkease/store/static/store/gallery/update_profile.png)
 
 **Wireframes**
+ - [index.html](https://www.figma.com/design/qVUeUGxCOHjgpmGoDIcCzP/Untitled?node-id=0-1&t=qt2Cb6tlq6MZQBdU-1)
+ - [productlist.html](https://www.figma.com/design/qVUeUGxCOHjgpmGoDIcCzP/Untitled?node-id=4-37&t=qt2Cb6tlq6MZQBdU-1)
+ - [buy_product.html](https://www.figma.com/design/qVUeUGxCOHjgpmGoDIcCzP/Untitled?node-id=5-81&t=qt2Cb6tlq6MZQBdU-1)
+ - [cart.html](https://www.figma.com/design/qVUeUGxCOHjgpmGoDIcCzP/Untitled?node-id=6-103&t=qt2Cb6tlq6MZQBdU-1)
+ - [checkout.html](https://www.figma.com/design/qVUeUGxCOHjgpmGoDIcCzP/Untitled?node-id=7-119&t=qt2Cb6tlq6MZQBdU-1)
+ - [order_success](https://www.figma.com/design/qVUeUGxCOHjgpmGoDIcCzP/Untitled?node-id=7-143&t=qt2Cb6tlq6MZQBdU-1)
 
 ## Colour Scheme
 - **Primary:** Black, white and pink
@@ -132,7 +138,7 @@ Walkease features a minimal, clean aesthetic:
 - Placeholder graphics sourced from Unsplash and customized with brand colors.
 
 ## Testing
-(Test Plan)[https://1drv.ms/w/c/e1af83f369e97fb7/Ebm6ubvVfndNrFqgfDX9BNkBCy3iWzNmigQ9enYfK_vZkg?e=EYCRUs]
+[Test Plan](https://1drv.ms/w/c/e1af83f369e97fb7/Ebm6ubvVfndNrFqgfDX9BNkBCy3iWzNmigQ9enYfK_vZkg?e=EYCRUs)
 
  - [index.html](walkease/store/static/store/gallery/index_validation.png)
  - [productlist.html](walkease/store/static/store/gallery/productlist_validation.png)
