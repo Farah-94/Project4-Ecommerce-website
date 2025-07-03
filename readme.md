@@ -3,7 +3,6 @@
 ## Table of Contents
 - [Introduction](#introduction)
 - [Purpose](#purpose)
-- [Functionality](#functionality)
 - [Deployment](#deployment)
 - [User Experience](#user-experience)
 - [Design](#design)
@@ -32,7 +31,7 @@ The site emphasizes smooth user experience, secure integration with third-party 
 ## Purpose
 The goal of Walkease is to deliver a polished, user-friendly online store that showcases products with clear imagery, intuitive navigation, and a streamlined purchase process. It’s designed for small retailers who want a turnkey solution with Django’s robustness and Stripe’s reliability.
 
-## Functionality
+
 
 
 ## Deployment
