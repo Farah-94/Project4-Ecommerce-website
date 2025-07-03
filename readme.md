@@ -3,6 +3,7 @@
 ## Table of Contents
 - [Introduction](#introduction)
 - [Purpose](#purpose)
+- [Functionality]
 - [Deployment](#deployment)
 - [User Experience](#user-experience)
 - [Design](#design)
@@ -15,7 +16,7 @@
 ---
 
 ## Introduction
-[WalkEase]([index.html](walkease/store/static/store/gallery/homepage.png)) is a fully responsive, user-friendly e-commerce website designed for selling shoes online. Built with Django, the project showcases modern development practices and a clean, modular architecture by dividing functionality into four dedicated apps:
+[WalkEase](walkease/store/static/store/gallery/homepage.png) is a fully responsive, user-friendly e-commerce website designed for selling shoes online. Built with Django, the project showcases modern development practices and a clean, modular architecture by dividing functionality into four dedicated apps:
 
 **Store App** – Displays product listings, categories, detailed product pages, and supports customer reviews.
 
