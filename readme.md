@@ -3,7 +3,7 @@
 ## Table of Contents
 - [Introduction](#introduction)
 - [Purpose](#purpose)
-- [Functionality]
+- [Functionality](#functionality)
 - [Deployment](#deployment)
 - [User Experience](#user-experience)
 - [Design](#design)
@@ -16,7 +16,7 @@
 ---
 
 ## Introduction
-[WalkEase](walkease/store/static/store/gallery/homepage.png) is a fully responsive, user-friendly e-commerce website designed for selling shoes online. Built with Django, the project showcases modern development practices and a clean, modular architecture by dividing functionality into four dedicated apps:
+[WalkEase](https://walkease-website-1eaae1018604.herokuapp.com/) is a fully responsive, user-friendly e-commerce website designed for selling shoes online. Built with Django, the project showcases modern development practices and a clean, modular architecture by dividing functionality into four dedicated apps:
 
 **Store App** – Displays product listings, categories, detailed product pages, and supports customer reviews.
 
@@ -31,6 +31,9 @@ The site emphasizes smooth user experience, secure integration with third-party 
 
 ## Purpose
 The goal of Walkease is to deliver a polished, user-friendly online store that showcases products with clear imagery, intuitive navigation, and a streamlined purchase process. It’s designed for small retailers who want a turnkey solution with Django’s robustness and Stripe’s reliability.
+
+## Functionality
+
 
 ## Deployment
 How to Run the Project Locally
