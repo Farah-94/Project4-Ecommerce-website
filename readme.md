@@ -6,6 +6,7 @@
 - [Deployment](#deployment)
 - [User Experience](#user-experience)
 - [Design](#design)
+- [Schema](#schema)
 - [Colour Scheme](#colour-scheme)
 - [Typography](#typography)
 - [Imagery](#imagery)
@@ -116,6 +117,7 @@ Walkease features a minimal, clean aesthetic:
  - [profile.html](walkease/store/static/store/gallery/profile.png)
  - [update_profile.html](walkease/store/static/store/gallery/update_profile.png)
 
+
 **Wireframes**
  - [index.html](https://www.figma.com/design/qVUeUGxCOHjgpmGoDIcCzP/Untitled?node-id=0-1&t=qt2Cb6tlq6MZQBdU-1)
  - [productlist.html](https://www.figma.com/design/qVUeUGxCOHjgpmGoDIcCzP/Untitled?node-id=4-37&t=qt2Cb6tlq6MZQBdU-1)
@@ -123,6 +125,32 @@ Walkease features a minimal, clean aesthetic:
  - [cart.html](https://www.figma.com/design/qVUeUGxCOHjgpmGoDIcCzP/Untitled?node-id=6-103&t=qt2Cb6tlq6MZQBdU-1)
  - [checkout.html](https://www.figma.com/design/qVUeUGxCOHjgpmGoDIcCzP/Untitled?node-id=7-119&t=qt2Cb6tlq6MZQBdU-1)
  - [order_success](https://www.figma.com/design/qVUeUGxCOHjgpmGoDIcCzP/Untitled?node-id=7-143&t=qt2Cb6tlq6MZQBdU-1)
+
+
+
+## Schema
+- [Internal Schema](https://dbdiagram.io/d/6867bdeaf413ba35084e21c5)
+
+- This layout defines:
+
+ 1. Table structures
+ 2. Data types (int, varchar, decimal, etc.)
+ 3. Primary and foreign key relationships
+ 4. Default values and partial links
+
+- [Externam Schema](https://dbdiagram.io/d/6867c67af413ba35084f7f6e)
+
+This external schema maps the shopper’s experience across the platform
+
+ 1. Home Page (index.html) Welcomes user with promotions, featured product, and quick access to cart/login.
+ 2. Product List (productlist.html) Let user explore all items or filter by category, then jump into individual product details.
+ 3. Buy Product (buy_product.html) Shows product gallery, pricing, size options, and a form to add items to cart or leave reviews.
+ 4.  Cart (cart.html) Displays selected items, supports quantity edits, and links directly to checkout.
+ 5. Checkout (checkout.html) Summarizes the order and offers secure Stripe-based payment.
+ 6.  Order Success (order_success.html) Confirms purchase and shows order number, date, and item breakdown.
+ 7.  Profile (profile.html) Reveals personal details, past orders, and lets them update info or avatar.
+ 8.  Profile Update (update_profile.html) Offers a friendly form to revise details, bio, and upload a new image.
+
 
 ## Colour Scheme
 - **Primary:** Black, white and pink
