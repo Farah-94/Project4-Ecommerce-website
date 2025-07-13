@@ -39,8 +39,8 @@
             <h3>{{ item.product.name }}</h3>
             <p>Size: {{ item.size }}</p>
             <p>Quantity: {{ item.quantity }}</p>
-            <p>Price per item: ${{ item.product.price|floatformat:2 }}</p>
-            <p>Total: ${{ item.total_price|floatformat:2 }}</p>
+            <p>Price per item: £{{ item.product.price|floatformat:2 }}</p>
+            <p>Total: £{{ item.total_price|floatformat:2 }}</p>
 
             <div class="cart-actions">
               <a href="{% url 'cart:update_cart' item.id 'decrease' %}">➖</a>
@@ -55,7 +55,7 @@
       {% endfor %}
 
       <div class="cart-summary">
-        <h3>Cart Total: ${{ total_price|floatformat:2 }}</h3>
+        <h3>Cart Total: £{{ total_price|floatformat:2 }}</h3>
         <a href="{% url 'checkout:checkout' %}" class="checkout-btn">
           Proceed to Checkout
         </a>
