@@ -1,4 +1,4 @@
-    # Walkease
+   <h1>Walkease<h1>
 
 ## Table of Contents
 - [Introduction](#introduction)
@@ -131,7 +131,7 @@ Walkease features a minimal, clean aesthetic:
 ## Schema
 - [Internal Schema](https://dbdiagram.io/d/6867bdeaf413ba35084e21c5)
 
-- This layout defines:
+This layout defines:
 
  1. Table structures
  2. Data types (int, varchar, decimal, etc.)
