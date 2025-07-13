@@ -138,7 +138,7 @@ This layout defines:
  3. Primary and foreign key relationships
  4. Default values and partial links
 
-- [Externam Schema](https://dbdiagram.io/d/6867c67af413ba35084f7f6e)
+- [External Schema](https://dbdiagram.io/d/6867c67af413ba35084f7f6e)
 
 This external schema maps the shopper’s experience across the platform
 
