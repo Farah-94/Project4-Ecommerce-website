@@ -1,10 +1,4 @@
 {
-  "name": "Walkease Checkout",
-  "short_name": "Walkease",
-  "start_url": "/checkout/",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#4CAF50",
   "icons": [
     {
       "src": "/static/checkout/icons/apple-touch-icon.png",
@@ -21,5 +15,9 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "start_url": "/checkout/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4CAF50"
 }
