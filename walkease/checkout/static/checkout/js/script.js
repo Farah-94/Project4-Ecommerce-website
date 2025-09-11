@@ -1,9 +1,9 @@
 // static/checkout/js/script.js
 
-// 0) Initialize Stripe with your publishable key
-const stripe     = Stripe(window.stripePublicKey);
+// 0) Initialize Stripe with your publishable key and disable analytics
+const stripe     = Stripe(window.stripePublicKey, { analytics: { disabled: true } });
 const intentUrl  = window.paymentIntentUrl;
-const successUrl = window.paymentSuccessUrl;  // now already "https://…/checkout/success/"
+const successUrl = window.paymentSuccessUrl;
 
 // 1) CSRF helper for Django
 function getCookie(name) {
