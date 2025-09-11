@@ -1,23 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Checkout — Walkease</title>
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'checkout/css/style.css' %}">
-  
-  {# 1) Load Stripe.js once #}
+    <!-- 1) Apple touch icon -->
+    <link 
+    rel="apple-touch-icon" 
+    sizes="180x180" 
+    href="{% static 'icons/apple-touch-icon.png' %}"
+  >
+
+  <!-- 2) Stylesheet -->
+  <link 
+    rel="stylesheet" 
+    href="{% static 'checkout/css/style.css' %}"
+  >
+
+  <!-- 3) PWA manifest (must end with .json) -->
+  <link 
+    rel="manifest" 
+    href="{% static 'checkout/manifest.json' %}"
+  >
+
+  <!-- 4) Load Stripe.js -->
   <script src="https://js.stripe.com/v3/"></script>
 
-  {# 2) Expose keys & URLs for the client code #}
+  <!-- 5) Expose Stripe keys & URLs -->
   <script>
-  window.stripePublicKey   = "{{ stripe_public_key }}";
-  window.paymentIntentUrl  = "{% url 'checkout:create_payment_intent' %}";
-  // Stripe.confirmPayment needs a fully-qualified URL:
-  window.paymentSuccessUrl = "{{ payment_success_url }}";
-  console.log("✅ return_url:", window.paymentSuccessUrl);
-</script>
+    window.stripePublicKey   = "{{ stripe_public_key }}";
+    window.paymentIntentUrl  = "{% url 'checkout:create_payment_intent' %}";
+    window.paymentSuccessUrl = "{{ payment_success_url }}";
+    window.cartTotal         = "{{ cart_total|floatformat:2 }}";
+  </script>
 </head>
 
 <body>
@@ -37,20 +53,25 @@
     <!-- Order Summary -->
     <section class="order-summary">
       <h2>Order Summary</h2>
-      {% if cart_items %}
-        <ul>
-          {% for item in cart_items %}
-            <li>
-              <span class="product-title">{{ item.product.name }}</span>
-              <span class="product-quantity">× {{ item.quantity }}</span>
-              <span class="product-price">£{{ item.total_price }}</span>
-            </li>
-          {% endfor %}
-        </ul>
-        <p class="cart-total"><strong>Total: </strong>£{{ cart_total|floatformat:2 }}</p>
-      {% else %}
-        <p>Your cart is currently empty.</p>
-      {% endif %}
+
+      <!-- Wrap the `if` in <template> so the <ul> only has <li> -->
+      <template>{% if cart_items %}</template>
+      <ul class="order-list">
+        <template>{% for item in cart_items %}</template>
+        <li class="order-item">
+          <span class="product-title">{{ item.product.name }}</span>
+          <span class="product-quantity">× {{ item.quantity }}</span>
+          <span class="product-price">£{{ item.total_price }}</span>
+        </li>
+        <template>{% endfor %}</template>
+      </ul>
+      <p class="cart-total">
+        <strong>Total: </strong>£{{ cart_total|floatformat:2 }}
+      </p>
+
+      <template>{% else %}</template>
+      <p>Your cart is currently empty.</p>
+      <template>{% endif %}</template>
     </section>
 
     <!-- Payment Form -->
@@ -58,13 +79,16 @@
       <h2>Payment Information</h2>
       <form id="payment-form">
         {% csrf_token %}
-        <div id="payment-element" style="min-height:100px; margin-bottom:1rem;">
-          <!-- Stripe Elements will mount here -->
-        </div>
+        <div id="payment-element" class="payment-element"></div>
         <button type="submit" id="submit" class="btn-submit">
           Pay £{{ cart_total|floatformat:2 }}
         </button>
-        <div id="payment-message" role="alert" style="color:red; margin-top:1rem;"></div>
+        <div 
+          id="payment-message" 
+          class="payment-message" 
+          role="alert" 
+          aria-live="polite"
+        ></div>
       </form>
     </section>
   </main>
@@ -73,8 +97,7 @@
     <p>&copy; {% now "Y" %} Walkease. All rights reserved.</p>
   </footer>
 
-  {# 3) Load custom Stripe logic #}
+  <!-- Custom Stripe logic -->
   <script src="{% static 'checkout/js/script.js' %}"></script>
 </body>
 </html>
-
