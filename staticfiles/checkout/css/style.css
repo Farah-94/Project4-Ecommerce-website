@@ -294,3 +294,26 @@ footer {
     text-align: center;
   }
 }
+/* Give the Stripe mount point a min-height & bottom margin */
+.payment-element {
+  min-height: 100px;
+  margin-bottom: 1rem;
+}
+
+/* Style the error/message container */
+.payment-message {
+  color: red;
+  margin-top: 1rem;
+}
+
+/* Optional: style your order list */
+.order-list {
+  list-style: none;
+  padding: 0;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}

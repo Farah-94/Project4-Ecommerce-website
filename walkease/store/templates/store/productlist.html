@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product List{% if category %} - {{ category.name }}{% endif %}</title>
     {% load static file_extras %}
-    {% load static %}
+  
     <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
 </head>
 <body>
     <header>
